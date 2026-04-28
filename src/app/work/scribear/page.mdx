@@ -1,0 +1,62 @@
+import Link from "next/link";
+
+export const metadata = {
+  title: "ScribeAR — Speech to LaTeX | Mighty Saranborirak",
+  description:
+    "Building a real-time speech-to-LaTeX parsing layer at the UIUC ScribeAR research lab. +22% accuracy, ~140ms latency.",
+};
+
+<div className="max-w-[760px] mx-auto px-6 lg:px-0 pt-32 pb-24">
+
+<Link href="/#work" className="font-mono text-xs tracking-widest uppercase text-ink-soft no-underline hover:text-ink">
+  ← Back to work
+</Link>
+
+<div className="font-mono text-[11px] tracking-widest text-rust uppercase mt-12 mb-4">
+  Research · UIUC · 2024
+</div>
+
+# ScribeAR — Speech to LaTeX
+
+**TL;DR:** I rebuilt the tokenizer in ScribeAR's speech-to-equation pipeline so it could disambiguate between phrases that sound the same but mean different things mathematically. Result: +22% accuracy lift over baseline, ~140ms P95 latency end-to-end.
+
+---
+
+## The problem
+
+ScribeAR is an accessibility tool that converts spoken language into rendered LaTeX in real time, primarily for blind and low-vision students taking math-heavy classes.
+
+The existing system worked well for prose but fell apart on equations. The model was treating "x squared" and "x times 2" as essentially the same input. So was "the integral of f of x" and "the integral, of f of x" — comma matters.
+
+## What I tried first
+
+The naive fix is to feed the whole transcribed sentence into a math-aware LLM and ask it to output LaTeX. This worked, but latency spiked to 800ms+ and the model hallucinated structure that wasn't there.
+
+## What actually worked
+
+I broke the pipeline into three stages:
+
+1. **Tokenize** with a context window that looks at neighboring words, not just the target phrase
+2. **Parse** into an intermediate AST (operands, operators, grouping) before any LaTeX generation
+3. **Render** at the AST level so we get structural correctness for free
+
+The key insight was that math has way fewer ambiguous tokens than natural language. Once you commit to an AST, you can recover from a lot of speech recognition errors that would otherwise cascade into wrong equations.
+
+## Outcomes
+
+- **+22% accuracy lift** over the previous baseline on our internal eval set of 200 spoken equations
+- **~140ms P95 latency** from audio chunk to rendered LaTeX
+- Shipped to the live ScribeAR research lab and used by students
+
+## What I'd do differently
+
+The eval set was too small. 200 equations is enough to detect a 22% lift but not enough to know which classes of mistakes we're still getting wrong. Next iteration would build a much larger synthetic eval before any further model work.
+
+---
+
+<div className="mt-16 pt-8 border-t border-line flex justify-between font-mono text-xs tracking-widest text-ink-soft">
+  <span>NEXT →</span>
+  <Link href="/work/zebra" className="text-ink no-underline hover:underline">Zebra Technologies</Link>
+</div>
+
+</div>

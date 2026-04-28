@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand color tokens — Dhvani-inspired high-contrast B&W with warm accents */
+  --color-paper: #ffffff;
+  --color-paper-soft: #f7f5f1;
+  --color-paper-deep: #f3f1ed;
+  --color-ink: #0a0a0a;
+  --color-ink-2: #161616;
+  --color-ink-soft: #6b6b6b;
+  --color-ink-mute: #9a9a9a;
+  --color-line: #e5e3df;
+
+  --color-rust: #c8553d;
+  --color-olive: #5a6135;
+  --color-mustard: #d4a93a;
+  --color-cherry: #8b2235;
+  --color-butter: #f5e6a8;
+  --color-cream-warm: #f1ead8;
+
+  /* Typography — set up via next/font in lib/fonts.ts and applied in layout */
+  --font-sans: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-fraunces);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reusable italic-serif accent class — used everywhere */
+.ital {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Spotify "now playing" progress bar animation */
+@keyframes progress {
+  0%, 100% { width: 38%; }
+  50% { width: 72%; }
+}
+.spotify-progress::after {
+  animation: progress 8s ease-in-out infinite;
+}
+
+/* Auto-rotating fact text in the about strip */
+@keyframes rotateText {
+  0%, 22% { opacity: 0; transform: translateY(20px); }
+  25%, 45% { opacity: 1; transform: translateY(0); }
+  48%, 100% { opacity: 0; transform: translateY(-20px); }
+}
+.rotator-line {
+  animation: rotateText 16s ease-in-out infinite;
+  position: absolute;
+  inset: 0;
+}
+
+/* Marquee */
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 25s linear infinite;
+}
+
+/* Fade-up reveal for scroll-triggered elements */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
