@@ -155,10 +155,34 @@ export function AirestateVisual() {
   );
 }
 
+export function BangkokBankVisual() {
+  return (
+    <div className="w-full h-full bg-gradient-to-br from-[#003d7a] to-[#0066cc] flex items-center justify-center p-8">
+      <div className="text-paper text-center">
+        <div className="font-serif italic text-5xl mb-2">Bangkok Bank</div>
+        <div className="font-mono text-xs tracking-widest opacity-70 uppercase">Software · 2024</div>
+      </div>
+    </div>
+  );
+}
+
+export function IlliniHappeningsVisual() {
+  return (
+    <div className="w-full h-full bg-gradient-to-br from-[#e84a27] to-[#13294b] flex items-center justify-center p-8">
+      <div className="text-paper text-center">
+        <div className="font-serif italic text-5xl mb-2">Illini Happenings</div>
+        <div className="font-mono text-xs tracking-widest opacity-70 uppercase">Campus Events</div>
+      </div>
+    </div>
+  );
+}
+
 export const visuals: Record<string, React.ComponentType> = {
   scribear: ScribearVisual,
   zebra: ZebraVisual,
   thaisa: ThaisaVisual,
   gobabygo: GobabyGoVisual,
   airestate: AirestateVisual,
+  bangkokbank: BangkokBankVisual,
+  illinihappenings: IlliniHappeningsVisual,
 };

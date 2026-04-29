@@ -1,6 +1,6 @@
-export function Avatar() {
+export function Avatar({ className = "w-[280px] h-[280px]" }: { className?: string }) {
   return (
-    <div className="w-[280px] h-[280px] rounded-full overflow-hidden relative">
+    <div className={`${className} rounded-full overflow-hidden relative`}>
       <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
         <defs>
           <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">

@@ -1,0 +1,130 @@
+import { CaseStudyLayout, CaseStudySection } from "@/components/case-study-layout";
+import { BangkokBankVisual } from "@/components/visuals";
+
+export const metadata = {
+  title: "TripBuddy — Tourist Safety in Thailand | Mighty Burapachaisri",
+  description:
+    "A real-time safety companion for tourists in Thailand. Won 'Most Popular' at the Bangkok Bank Student Internship Program hackathon, 2025.",
+};
+
+<CaseStudyLayout
+  sections={[
+    { id: "problem", label: "Problem" },
+    { id: "role", label: "Role" },
+    { id: "research", label: "Research" },
+    { id: "design", label: "Design" },
+    { id: "reflection", label: "Reflection" },
+    { id: "outcome", label: "Outcome" },
+  ]}
+  org={{ label: "Bangkok Bank", icon: "B", iconBg: "bg-[#003d7a] text-paper" }}
+  title="Designing a real-time safety companion for tourists in Thailand."
+  meta={{
+    role: "Product Management",
+    context: "Internship",
+    timeline: "Jul 2025 – Oct 2025",
+  }}
+  next={{ href: "/work/airestate", label: "AirEstate" }}
+>
+
+<div className="rounded-2xl overflow-hidden bg-paper-soft border border-line aspect-[16/10] mb-20">
+  <BangkokBankVisual />
+</div>
+
+<CaseStudySection
+  id="problem"
+  label="Problem"
+  headline="Thailand expects 35.5M international tourists in 2025, but fragmented safety information is pulling inbound numbers down."
+>
+
+Recent safety incidents — a high-profile kidnapping, the Thailand–Cambodia border tension, scattered scam reports — pulled inbound numbers down 6% year-over-year. The information tourists *do* get is fragmented: news on one app, emergency numbers buried in a hotel pamphlet, embassy contacts on a different government site, all in Thai.
+
+We were asked to propose a product that could rebuild traveler trust. We built TripBuddy.
+
+</CaseStudySection>
+
+<CaseStudySection
+  id="role"
+  label="Role"
+  headline="Officially research and product feasibility — in practice, much more."
+>
+
+- Led 8 user interviews with international tourists in Bangkok
+- Owned the product direction and feature scoping argument
+- Designed the **Home, SOS, Area Safety, and News/Area Detail** screens in Figma after our planned prototyper hit a tooling wall
+- Co-presented to Bangkok Bank leadership at the final pitch
+
+</CaseStudySection>
+
+<CaseStudySection
+  id="research"
+  label="Research"
+  headline="One interview reframed the entire brief — from 'safety app' to 'single trusted hub.'"
+>
+
+The interview that changed the product was with a Chinese tourist who'd been in Bangkok for four days. When I asked how he found out about a recent incident near his hotel, he listed five different sources — Line groups, WeChat news, his embassy's website, a Thai news site translated through Google, and a friend back home. None of them agreed on what had happened or what to do.
+
+> "In China I just open one app. Here I open ten and trust none of them."
+
+That reframed the brief. The problem wasn't a missing safety app — it was that **safety information existed but was scattered across channels with no synthesis**. The Chinese super-app model (one app, many services, trusted because it's official) was the mental model our users already had. The opportunity was to bring that model to inbound tourism.
+
+This became our north star: **TripBuddy as a single trusted hub** — emergency, news, embassy, etiquette, basic services — rather than a thin safety layer on top of existing fragmented tools.
+
+</CaseStudySection>
+
+<CaseStudySection
+  id="design"
+  label="Design"
+  headline="Designing the News / Area Detail screen for a panicking foreigner."
+>
+
+The screen I'm proudest of is the **News / Area Detail screen** — what a user sees when they tap into a flagged area on the map.
+
+<div className="my-8 rounded-2xl border border-line bg-paper-soft aspect-[16/10] flex items-center justify-center font-mono text-xs tracking-widest text-ink-soft uppercase">
+  Screenshot: News / Area Detail screen
+</div>
+
+The design constraint: a foreign tourist, possibly under stress, possibly with limited English, needs to answer three questions in under five seconds.
+
+1. How bad is this?
+2. What's actually happening?
+3. What should I do right now?
+
+I structured the screen as a strict top-to-bottom answer to those three questions:
+
+- **Location + risk gauge** at the top — instant severity read without reading any text
+- **High-risk banner** in plain language — one sentence, one action verb
+- **Current Situation** as a dated bullet list — facts, not narrative
+- **Recommended Actions** as a separate block — verbs first ("Stay indoors," "Call 191 only with new info")
+- **Source updates** at the bottom — for users who want to verify before acting
+
+Separating *situation* from *action* was the key call. Most news apps blend them, which forces a stressed user to extract instructions from prose. We made the instructions a discrete block they could act on without re-reading.
+
+</CaseStudySection>
+
+<CaseStudySection
+  id="reflection"
+  label="Reflection"
+  headline="Three things I'd do differently next time."
+>
+
+1. **The illustrations on Home and SOS are wrong for the brand promise.** Cute 3D icons on a "Crime" or "Injury" tile undercut the trust we were trying to build. NanNam and I discussed this late and didn't have time to swap them. A second pass would replace them with flatter, more neutral iconography.
+2. **The Area Safety map needs a confidence indicator.** Our zones were AI-generated from news scraping. Users have to know how recent and how reliable each zone's data is. Without that, the map is asking for blind trust we hadn't earned.
+3. **I should have wireframed before jumping into hi-fi.** When Boom handed off the Figma file, I went straight to polished screens because the deadline was tight. The result was that some interaction decisions (like the SOS-button-plus-six-categories pattern) didn't get the scrutiny they deserved. Lo-fi first would have surfaced those questions earlier.
+
+</CaseStudySection>
+
+<CaseStudySection
+  id="outcome"
+  label="Outcome"
+  headline="Won 'Most Popular' at the BBL hackathon. Pitched to Bangkok Bank leadership."
+>
+
+- **Won "Most Popular" at the BBL Student Internship Program hackathon**
+- Presented to Bangkok Bank leadership; feedback was that the product direction was strong but the build cost (real-time AI moderation across multiple languages, government API integrations) made it a hard fit for the bank's current roadmap
+- The team continues to use the case as a reference for the kind of cross-functional ambition the program is meant to develop
+
+The bank's feasibility note was the right pushback. If I were to scope a v2, I'd cut the scope to a single high-confidence loop — verified news + one-tap embassy contact — and ship that before earning the right to expand.
+
+</CaseStudySection>
+
+</CaseStudyLayout>

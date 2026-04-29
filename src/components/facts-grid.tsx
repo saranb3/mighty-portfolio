@@ -36,10 +36,10 @@ export function FactsGrid() {
   return (
     <section
       id="fun"
-      className="bg-[#f3f1ed] px-8 lg:px-16 py-24 border-y border-line"
+      className="bg-[#ebe7dc] px-8 lg:px-16 py-24 border-y border-line"
     >
       <div className="max-w-[1400px] mx-auto">
-        <h2 className="font-serif text-4xl lg:text-7xl font-normal -tracking-[0.035em] leading-[0.95] mb-16">
+        <h2 className="display-serif text-4xl lg:text-7xl font-bold -tracking-[0.035em] leading-[0.95] mb-16">
           A few things <span className="ital">about me</span>.
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

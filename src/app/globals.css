@@ -2,14 +2,14 @@
 
 @theme {
   /* Brand color tokens — Dhvani-inspired high-contrast B&W with warm accents */
-  --color-paper: #ffffff;
-  --color-paper-soft: #f7f5f1;
+  --color-paper: #f4f1ea;
+  --color-paper-soft: #ebe7dc;
   --color-paper-deep: #f3f1ed;
   --color-ink: #0a0a0a;
   --color-ink-2: #161616;
   --color-ink-soft: #6b6b6b;
   --color-ink-mute: #9a9a9a;
-  --color-line: #e5e3df;
+  --color-line: #d8d4c8;
 
   --color-rust: #c8553d;
   --color-olive: #5a6135;
@@ -19,8 +19,8 @@
   --color-cream-warm: #f1ead8;
 
   /* Typography — set up via next/font in lib/fonts.ts and applied in layout */
-  --font-sans: var(--font-geist);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
   --font-serif: var(--font-fraunces);
 }
 
@@ -34,6 +34,19 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* Paper grain overlay — subtle SVG noise multiplied into the cream background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.04 0 0 0 0 0.04 0 0 0 0 0.04 0 0 0 0.25 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
 /* Reusable italic-serif accent class — used everywhere */
@@ -43,25 +56,10 @@ body {
   font-weight: 400;
 }
 
-/* Spotify "now playing" progress bar animation */
-@keyframes progress {
-  0%, 100% { width: 38%; }
-  50% { width: 72%; }
-}
-.spotify-progress::after {
-  animation: progress 8s ease-in-out infinite;
-}
-
-/* Auto-rotating fact text in the about strip */
-@keyframes rotateText {
-  0%, 22% { opacity: 0; transform: translateY(20px); }
-  25%, 45% { opacity: 1; transform: translateY(0); }
-  48%, 100% { opacity: 0; transform: translateY(-20px); }
-}
-.rotator-line {
-  animation: rotateText 16s ease-in-out infinite;
-  position: absolute;
-  inset: 0;
+/* Display headlines — Fraunces with optical-size axis pushed to 144 */
+.display-serif {
+  font-family: var(--font-serif);
+  font-variation-settings: "opsz" 144;
 }
 
 /* Marquee */
@@ -81,4 +79,20 @@ body {
 .reveal.in {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Auto-trigger fade-up — for above-the-fold elements that should animate on load */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  opacity: 0;
+  animation: fade-up 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

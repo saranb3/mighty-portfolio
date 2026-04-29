@@ -1,31 +1,31 @@
 import type { Metadata } from "next";
-import { geist, geistMono, fraunces } from "@/lib/fonts";
+import { inter, fraunces, jetbrainsMono } from "@/lib/fonts";
 import { Nav } from "@/components/nav";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Mighty Saranborirak — Product",
+  title: "Mighty Burapachaisri — Product",
   description:
     "Junior at UIUC studying Statistics & CS. PM intern at Zebra Technologies, Summer '26. Building products with rigor and taste.",
   metadataBase: new URL("https://mighty.so"),
   openGraph: {
-    title: "Mighty Saranborirak — Product",
+    title: "Mighty Burapachaisri — Product",
     description: "Product thinker, systems builder, student of taste.",
     url: "https://mighty.so",
-    siteName: "Mighty Saranborirak",
+    siteName: "Mighty Burapachaisri",
     type: "website",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Mighty Saranborirak — Portfolio",
+        alt: "Mighty Burapachaisri — Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mighty Saranborirak",
+    title: "Mighty Burapachaisri",
     description: "Product thinker, systems builder, student of taste.",
     images: ["/og-image.png"],
   },
@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geist.variable} ${geistMono.variable} ${fraunces.variable}`}
+      className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable}`}
     >
       <body>
         <Nav />

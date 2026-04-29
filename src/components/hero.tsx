@@ -1,84 +1,111 @@
-import { Avatar } from "./avatar";
-import { SpotifyCard } from "./spotify-card";
+import Image from "next/image";
+import { CyclingSubtitle } from "./cycling-subtitle";
 
 export function Hero() {
   return (
-    <section className="min-h-screen grid grid-cols-1 lg:grid-cols-2 relative">
-      {/* LEFT — dark side */}
-      <div className="bg-ink text-paper px-8 lg:px-16 pt-32 pb-16 flex flex-col justify-between relative overflow-hidden">
-        <div className="relative z-10">
-          <h1 className="font-sans text-5xl lg:text-6xl font-medium tracking-tight leading-none mb-7">
-            Hello, I'm <span className="ital text-white">Mighty</span>
+    <section className="relative bg-paper">
+      {/* Vertical divider — independent of column heights */}
+      <div
+        aria-hidden
+        className="hidden lg:block absolute left-[58%] top-40 bottom-20 w-px bg-line fade-up"
+        style={{ animationDelay: "0.5s" }}
+      />
+      <div className="grid grid-cols-1 lg:grid-cols-[6fr_4fr]">
+        {/* LEFT — headline */}
+        <div className="px-8 lg:px-16 pt-40 pb-20 flex flex-col">
+          <h1
+            className="display-serif text-[88px] font-bold leading-[1] -tracking-[0.02em] mb-10 text-[#233] fade-up"
+            style={{
+              textShadow:
+                "0 0 8px rgba(0,0,0,0.15), 0 0 4px rgba(0, 0, 0, 0.1)",
+              mixBlendMode: "multiply",
+              animationDelay: "0.1s",
+            }}
+          >
+            Hello, I'm <span className="italic text-rust">Mighty!</span>
           </h1>
 
-          <p className="text-lg lg:text-[22px] leading-snug text-paper/85 max-w-[540px] mb-14 font-normal -tracking-[0.005em]">
-            Junior at UIUC studying Statistics & CS. I build products that take both the
-            system and the person seriously — <span className="ital">rigor with taste</span>.
-          </p>
+          <div className="fade-up" style={{ animationDelay: "0.3s" }}>
+            <CyclingSubtitle />
+          </div>
 
-          <div className="grid grid-cols-2 gap-8 mb-14 max-w-[540px]">
+          <div
+            className="grid grid-cols-[auto_auto] gap-x-20 mt-24 fade-up"
+            style={{ animationDelay: "0.55s" }}
+          >
             <div>
-              <div className="font-mono text-[11px] tracking-widest uppercase text-paper/60 mb-2">
-                Currently in
+              <div className="font-sans text-[23px] font-semibold text-ink mb-.5 -tracking-[0.005em] whitespace-nowrap">
+                Currently
               </div>
-              <div className="text-lg font-medium">Urbana, IL</div>
+              <div className="font-sans text-[23px] font-semibold text-ink-soft -tracking-[0.005em] inline-flex items-center gap-2 whitespace-nowrap">
+                PM Intern @ Zebra
+              </div>
             </div>
             <div>
-              <div className="font-mono text-[11px] tracking-widest uppercase text-paper/60 mb-2">
-                Joining as
+              <div className="font-sans text-[23px] font-semibold text-ink mb-.5 -tracking-[0.005em] whitespace-nowrap">
+                Previously at
               </div>
-              <div className="text-lg font-medium">PM Intern, Zebra</div>
+              <div className="font-sans text-[23px] font-semibold text-ink-soft -tracking-[0.005em] whitespace-nowrap">
+                Bangkok Bank, AirEstate
+              </div>
             </div>
           </div>
         </div>
 
-        <SpotifyCard />
-      </div>
-
-      {/* RIGHT — light side with glass card */}
-      <div className="bg-white px-8 lg:px-16 pt-32 pb-16 flex items-center justify-center relative overflow-hidden">
-        {/* Light caustics */}
-        <div
-          className="absolute inset-0 pointer-events-none z-0"
-          style={{
-            backgroundImage: `
-              radial-gradient(ellipse 800px 400px at 80% 20%, rgba(220, 225, 235, 0.6) 0%, transparent 60%),
-              radial-gradient(ellipse 600px 800px at 20% 80%, rgba(230, 230, 235, 0.5) 0%, transparent 50%),
-              radial-gradient(ellipse 400px 200px at 50% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 70%)
-            `,
-          }}
-        />
-
-        {/* Glass card */}
-        <div
-          className="relative z-10 w-full max-w-[460px] aspect-[4/5] rounded-[32px] p-12 flex flex-col items-center justify-between border"
-          style={{
-            background:
-              "linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(248,248,250,0.5) 100%)",
-            backdropFilter: "blur(40px)",
-            WebkitBackdropFilter: "blur(40px)",
-            borderColor: "rgba(255,255,255,0.8)",
-            boxShadow:
-              "0 30px 80px -20px rgba(10,10,10,0.12), 0 0 0 1px rgba(255,255,255,0.5) inset",
-          }}
+        {/* RIGHT — sidebar */}
+        <aside
+          className="border-t lg:border-t-0 border-line px-12 pt-40 pb-20 fade-up"
+          style={{ animationDelay: "0.4s" }}
         >
-          <Avatar />
+          <Image
+            src="/images/mighty-3.png"
+            alt="Mighty"
+            width={300}
+            height={375}
+            className="w-full max-w-[300px] aspect-[6/5] object-cover rounded-2xl object-[center_60%]"
+          />
 
-          <p className="text-center text-[17px] leading-snug text-ink font-medium -tracking-[0.01em]">
-            Pad krapow is my <span className="ital">favorite</span> meal in the world.
+          <h2 className="font-serif italic text-[28px] font-medium text-ink mt-8 mb-4 -tracking-[0.01em]">
+            Nice to meet you!
+          </h2>
+
+          <p className="font-sans text-[20px] font-medium leading-[1.5] -tracking-[0.005em] text-ink-soft mb-8 max-w-[440px]">
+            I like tinkering with new technologies, building cool things, and solving hard problems!
           </p>
 
-          <div className="flex gap-3.5">
-            {["in", "𝕏", "ig"].map((label) => (
-              <a
-                key={label}
-                className="w-9 h-9 flex items-center justify-center text-ink rounded-full text-sm font-semibold transition-colors hover:bg-white/60 cursor-pointer"
-              >
-                {label}
-              </a>
-            ))}
+          <div className="flex gap-2.5">
+            <a
+              href="https://www.linkedin.com/in/saran-burapachaisri/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="w-9 h-9 flex items-center justify-center transition-opacity hover:opacity-70"
+            >
+              <Image
+                src="/images/linkedin.png"
+                alt="LinkedIn"
+                width={24}
+                height={24}
+                className="w-[24px] h-[24px] object-contain"
+              />
+            </a>
+            <a
+              href="https://www.instagram.com/mighty.bura/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="w-9 h-9 flex items-center justify-center transition-opacity hover:opacity-70"
+            >
+              <Image
+                src="/images/instagram.png"
+                alt="Instagram"
+                width={24}
+                height={24}
+                className="w-[24px] h-[24px] object-contain"
+              />
+            </a>
           </div>
-        </div>
+        </aside>
       </div>
     </section>
   );
