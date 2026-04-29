@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { CyclingSubtitle } from "./cycling-subtitle";
-import { EmailLink } from "./email-link";
 
 export function Hero() {
   return (
@@ -40,7 +39,7 @@ export function Hero() {
                 Currently
               </div>
               <div className="font-sans text-[23px] font-semibold text-ink-soft -tracking-[0.008em] inline-flex items-center gap-2 whitespace-nowrap">
-                PM Intern @ Zebra
+                PM @ Zebra
               </div>
             </div>
             <div>
@@ -71,8 +70,8 @@ export function Hero() {
             Nice to meet you!
           </h2>
 
-          <p className="font-sans text-[20px] font-semibold leading-[1.5] -tracking-[0.005em] text-ink-soft mb-3 max-w-[440px]">
-            I'm a rising Senior studying Computer Science and Statistics at the University of Illinois. I enjoy building cool products and solving hard problems!
+          <p className="font-sans text-[23px] font-semibold leading-[1.5] -tracking-[0.005em] text-ink-soft mb-3 max-w-[440px] lg:max-w-none lg:mr-4 lg:text-left lg:[word-spacing:-0.01em]">
+            I'm a rising senior studying CS & Stats at the University of Illinois. I enjoy building user-facing products, tinkering with new technologies, and solving hard problems!
           </p>
 
           <div className="flex items-center gap-3">
@@ -81,7 +80,7 @@ export function Hero() {
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
-              className="inline-flex items-center justify-center w-9 h-9 opacity-70 transition-opacity hover:opacity-80"
+              className="inline-flex items-center justify-start opacity-70 transition-opacity hover:opacity-80"
             >
               <Image
                 src="/images/linkedin.png"
@@ -91,7 +90,6 @@ export function Hero() {
                 className="w-[28px] h-[28px] object-contain"
               />
             </a>
-            <EmailLink />
           </div>
         </aside>
       </div>

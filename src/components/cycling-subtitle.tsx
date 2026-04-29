@@ -6,9 +6,11 @@ const facts: string[] = [
   "I've been to 7 countries",  
   "My favorite soccer team is Liverpool",
   "I have eight dogs!",
-  "I can juggle the ball 200+ times", 
-  "I've been lifting for 4 years",
-  "I love drinking coffee"
+  "I can juggle the ball 200 times",
+  "I value empathy and kindness", 
+  "I destress by weight lifting and running",
+  "I hate sour coffee",
+  "I can type 160 wpm"
 
 ];
 
