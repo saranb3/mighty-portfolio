@@ -11,7 +11,7 @@
 
 @theme {
   /* Brand color tokens — Dhvani-inspired high-contrast B&W with warm accents */
-  --color-paper: #f4f1ea;
+  --color-paper: rgb(239, 239, 235);
   --color-paper-soft: #ebe7dc;
   --color-paper-deep: #f3f1ed;
   --color-ink: #0a0a0a;

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { CyclingSubtitle } from "./cycling-subtitle";
+import { EmailLink } from "./email-link";
 
 export function Hero() {
   return (
@@ -66,7 +67,7 @@ export function Hero() {
             className="w-full max-w-[180px] aspect-square object-cover rounded-full object-[center_60%]"
           />
 
-          <h2 className="font-serif italic text-[28px] font-medium text-ink mt-8 mb-4 -tracking-[0.01em]">
+          <h2 className="font-sans text-[28px] font-bold text-ink mt-8 mb-4 -tracking-[0.04em] opacity-80">
             Nice to meet you!
           </h2>
 
@@ -74,13 +75,13 @@ export function Hero() {
             I'm a rising Senior studying Computer Science and Statistics at the University of Illinois. I enjoy building cool products and solving hard problems!
           </p>
 
-          <div className="flex gap-2.5">
+          <div className="flex items-center gap-3">
             <a
               href="https://www.linkedin.com/in/saran-burapachaisri/"
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
-              className="w-9 h-9 flex items-center justify-center transition-opacity hover:opacity-70"
+              className="inline-flex items-center justify-start w-fit h-9 opacity-70 transition-opacity hover:opacity-80"
             >
               <Image
                 src="/images/linkedin.png"
@@ -90,21 +91,7 @@ export function Hero() {
                 className="w-[24px] h-[24px] object-contain"
               />
             </a>
-            <a
-              href="https://www.instagram.com/mighty.bura/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Instagram"
-              className="w-9 h-9 flex items-center justify-center transition-opacity hover:opacity-70"
-            >
-              <Image
-                src="/images/instagram.png"
-                alt="Instagram"
-                width={24}
-                height={24}
-                className="w-[24px] h-[24px] object-contain"
-              />
-            </a>
+            <EmailLink />
           </div>
         </aside>
       </div>
