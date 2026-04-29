@@ -4,7 +4,7 @@ import { visuals } from "./visuals";
 
 export function ProjectGrid() {
   return (
-    <section className="px-8 lg:px-16 py-20">
+    <section className="px-8 lg:px-16 pt-13 pb-20">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-14">
         {projects.map((project) => {
           const Visual = visuals[project.visualKey];
