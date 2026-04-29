@@ -29,14 +29,12 @@ export function Footer() {
         </div>
 
         <h2 className="font-sans text-6xl lg:text-[200px] font-medium -tracking-[0.045em] leading-[0.92] mb-12">
-          Thank
-          <br />
-          you<span className="ital text-[#9a8e6e]">.</span>
+          Thank you<span className="ital text-[#9a8e6e]">.</span>
         </h2>
 
-        <p className="font-serif text-2xl leading-relaxed font-normal max-w-[720px] mb-16 text-paper/85">
+        <p className="font-sans text-2xl leading-relaxed font-normal max-w-[720px] mb-16 text-paper/85">
           I'm currently open for{" "}
-          <span className="italic">summer 2026 PM internships</span> and beyond — and also
+          <span className="italic">fall 2026 and spring/summer 2027 PM internships</span> and beyond — and also
           accepting restaurant recommendations on Long Island. Let's connect and talk about the
           next thing.
         </p>

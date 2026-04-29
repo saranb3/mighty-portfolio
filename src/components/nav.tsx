@@ -3,11 +3,15 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const navLinks: { href: string; label: string }[] = [
+const navLinks: { href: string; label: string; external?: boolean }[] = [
   { href: "/", label: "Work" },
   { href: "/fun", label: "Fun" },
   { href: "/about", label: "About" },
-  { href: "/resume.pdf", label: "Resume" },
+  {
+    href: "https://drive.google.com/file/d/162x_Y-QUYPsCNMgDSRVPLfLzzrN9YhZ8/view?usp=sharing",
+    label: "Resume",
+    external: true,
+  },
 ];
 
 function isActive(href: string, pathname: string): boolean {
@@ -28,17 +32,19 @@ export function Nav() {
         M
       </Link>
 
-      <nav className="absolute top-6 right-6 lg:right-16 z-50 flex items-center gap-x-2 font-sans text-base">
+      <nav className="absolute top-6 right-6 lg:right-16 z-50 flex items-center gap-x-2 font-sans font-semibold text-xl -tracking-[0.005em]">
         {navLinks.map((link) => {
           const active = isActive(link.href, pathname);
           return (
             <Link
               key={link.href}
               href={link.href}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
               className={
                 active
-                  ? "px-5 py-2 rounded-full bg-paper-soft text-ink no-underline font-normal transition-colors"
-                  : "px-3 py-2 text-ink no-underline font-normal transition-colors hover:text-ink-soft"
+                  ? "px-5 py-2 rounded-full bg-neutral-300 text-ink no-underline font-bold transition-colors"
+                  : "px-3 py-2 text-ink no-underline font-semibold transition-colors hover:text-ink-soft"
               }
             >
               {link.label}

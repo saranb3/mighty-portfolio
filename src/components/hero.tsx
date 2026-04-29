@@ -81,14 +81,14 @@ export function Hero() {
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
-              className="inline-flex items-center justify-start w-fit h-9 opacity-70 transition-opacity hover:opacity-80"
+              className="inline-flex items-center justify-center w-9 h-9 opacity-70 transition-opacity hover:opacity-80"
             >
               <Image
                 src="/images/linkedin.png"
                 alt="LinkedIn"
-                width={24}
-                height={24}
-                className="w-[24px] h-[24px] object-contain"
+                width={28}
+                height={28}
+                className="w-[28px] h-[28px] object-contain"
               />
             </a>
             <EmailLink />
