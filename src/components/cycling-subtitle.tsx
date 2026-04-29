@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 
 const facts: string[] = [
   "I've been to 7 countries",  
-  "I lead a 30-member student org",
   "My favorite soccer team is Liverpool",
-  "I have eight dogs",
-  "I can juggle the ball 200+ times" 
+  "I have eight dogs!",
+  "I can juggle the ball 200+ times", 
+  "I've been lifting for 4 years",
+  "I love drinking coffee"
 
 ];
 
@@ -28,17 +29,63 @@ export function CyclingSubtitle() {
   }, []);
 
   return (
-    <div className="font-sans text-[88px] font-medium leading-[0.95] -tracking-[0.04em] text-[#999] min-h-[1.9em] max-w-[18ch]">
-      <span
+    <>
+      <svg
+        width="0"
+        height="0"
+        style={{ position: "absolute", pointerEvents: "none" }}
+        aria-hidden
+      >
+        <filter id="rocky-text">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="1.3"
+            numOctaves="2"
+            seed="3"
+            stitchTiles="stitch"
+            result="noise"
+          />
+          <feColorMatrix
+            in="noise"
+            type="matrix"
+            values="0 0 0 0 0.15
+                    0 0 0 0 0.15
+                    0 0 0 0 0.15
+                    0 0 0 1.0 0"
+            result="darkNoise"
+          />
+          <feComposite
+            in="darkNoise"
+            in2="SourceGraphic"
+            operator="in"
+            result="texturedNoise"
+          />
+          <feMerge>
+            <feMergeNode in="SourceGraphic" />
+            <feMergeNode in="texturedNoise" />
+          </feMerge>
+        </filter>
+      </svg>
+
+      <div
+        className="font-sans text-[80px] font-bold leading-[0.95] -tracking-[0.04em] text-[#999] min-h-[1.9em] max-w-[18ch]"
         style={{
-          display: "inline-block",
-          opacity: visible ? 1 : 0,
-          transform: visible ? "translateY(0)" : "translateY(12px)",
-          transition: "opacity 500ms ease, transform 500ms ease",
+          textShadow: "0 0 8px rgba(0,0,0,0.15), 0 0 4px rgba(0,0,0,0.1)",
+          mixBlendMode: "multiply",
+          filter: "url(#rocky-text)",
         }}
       >
-        {facts[index]}
-      </span>
-    </div>
+        <span
+          style={{
+            display: "inline-block",
+            opacity: visible ? 1 : 0,
+            transform: visible ? "translateY(0)" : "translateY(12px)",
+            transition: "opacity 500ms ease, transform 500ms ease",
+          }}
+        >
+          {facts[index]}
+        </span>
+      </div>
+    </>
   );
 }

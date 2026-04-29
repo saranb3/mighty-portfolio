@@ -1,0 +1,75 @@
+import { CaseStudyLayout, CaseStudySection } from "@/components/case-study-layout";
+import { ThaisaVisual } from "@/components/visuals";
+
+export const metadata = {
+  title: "Thai Student Association — President | Mighty Burapachaisri",
+  description:
+    "A year of running ops for a 100+ member student org at UIUC. 12 events shipped, $409 raised, full event calendar.",
+};
+
+<CaseStudyLayout
+  sections={[
+    { id: "context", label: "Context" },
+    { id: "ops", label: "Operations" },
+    { id: "outcomes", label: "By the Numbers" },
+    { id: "reflection", label: "Reflection" },
+  ]}
+  org={{ label: "Thai Student Association", icon: "T", iconBg: "bg-cherry text-paper" }}
+  title="Running a year of ops, events, and community for a 100+ member student org."
+  meta={{
+    role: "President",
+    context: "Student Organization",
+    timeline: "2025 – 2026",
+  }}
+  next={{ href: "/work/gobabygo", label: "GoBabyGo" }}
+>
+
+<div className="rounded-2xl overflow-hidden bg-paper-soft border border-line aspect-[16/10] mb-20">
+  <ThaisaVisual />
+</div>
+
+<CaseStudySection
+  id="context"
+  label="Context"
+  headline="A year of running ops for a 100+ member org. Songkran on the Quad, Casino Night, Friendsgiving, Lunar New Year, and a soccer tournament that nearly required a referee."
+>
+
+Events that shipped on time, every time.
+
+TODO: expand on what TASA is, who it serves, and why the role mattered to you personally.
+
+</CaseStudySection>
+
+<CaseStudySection
+  id="ops"
+  label="Operations"
+  headline="Building the systems that let a volunteer-run org actually ship."
+>
+
+TODO: how you organized the exec team, ran cadence, planned the calendar, handled budgeting, navigated UIUC bureaucracy.
+
+</CaseStudySection>
+
+<CaseStudySection
+  id="outcomes"
+  label="By the Numbers"
+  headline="12 events. 100+ members. Full calendar shipped on time."
+>
+
+- **12 events shipped** across academic year '25–'26, including ASTA Expo and Welcome Dinner
+- **$409 raised** through Thai Tea Sale; freshmen mentor program with 4 rotating P'Nong pairs
+- **100+ active members**, growing exec team, full event calendar
+
+</CaseStudySection>
+
+<CaseStudySection
+  id="reflection"
+  label="Reflection"
+  headline="What running a student org taught me about leadership."
+>
+
+TODO: lessons learned about delegation, motivation, succession, building institutional memory.
+
+</CaseStudySection>
+
+</CaseStudyLayout>

@@ -1,0 +1,73 @@
+import { CaseStudyLayout, CaseStudySection } from "@/components/case-study-layout";
+import { IlliniHappeningsVisual } from "@/components/visuals";
+
+export const metadata = {
+  title: "Illini Happenings — Campus Events | Mighty Burapachaisri",
+  description:
+    "TODO: write up Illini Happenings — what it is, who it's for, what you shipped.",
+};
+
+<CaseStudyLayout
+  sections={[
+    { id: "problem", label: "Problem" },
+    { id: "approach", label: "Approach" },
+    { id: "outcomes", label: "Outcomes" },
+    { id: "reflection", label: "Reflection" },
+  ]}
+  org={{ label: "Illini Happenings", icon: "I", iconBg: "bg-[#e84a27] text-paper" }}
+  title="TODO: one-line headline about what Illini Happenings does and why it matters."
+  meta={{
+    role: "Founder",
+    context: "Campus Events",
+    timeline: "2025",
+  }}
+  next={{ href: "/work/bangkokbank", label: "TripBuddy" }}
+>
+
+<div className="rounded-2xl overflow-hidden bg-paper-soft border border-line aspect-[16/10] mb-20">
+  <IlliniHappeningsVisual />
+</div>
+
+<CaseStudySection
+  id="problem"
+  label="Problem"
+  headline="TODO: what problem on UIUC's campus does Illini Happenings solve?"
+>
+
+TODO: write the problem statement — what was broken about how students discovered events on campus, what users you observed struggling, what you decided to fix.
+
+</CaseStudySection>
+
+<CaseStudySection
+  id="approach"
+  label="Approach"
+  headline="TODO: how you built it."
+>
+
+TODO: walk through the product decisions, the platform you built on, the team if any, the scope you set.
+
+</CaseStudySection>
+
+<CaseStudySection
+  id="outcomes"
+  label="Outcomes"
+  headline="TODO: numbers that matter."
+>
+
+- TODO: outcome 1
+- TODO: outcome 2
+- TODO: outcome 3
+
+</CaseStudySection>
+
+<CaseStudySection
+  id="reflection"
+  label="Reflection"
+  headline="TODO: what you'd do differently."
+>
+
+TODO: lessons learned, pivots, what's next.
+
+</CaseStudySection>
+
+</CaseStudyLayout>

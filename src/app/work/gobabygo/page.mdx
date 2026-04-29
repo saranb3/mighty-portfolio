@@ -1,0 +1,75 @@
+import { CaseStudyLayout, CaseStudySection } from "@/components/case-study-layout";
+import { GobabyGoVisual } from "@/components/visuals";
+
+export const metadata = {
+  title: "GoBabyGo Thailand — Founder | Mighty Burapachaisri",
+  description:
+    "Started in Bangkok modifying a single ride-on car for a kid who needed mobility. Grew into a national volunteer-run program across 7 chapters.",
+};
+
+<CaseStudyLayout
+  sections={[
+    { id: "origin", label: "Origin" },
+    { id: "scale", label: "Scaling" },
+    { id: "outcomes", label: "By the Numbers" },
+    { id: "reflection", label: "Reflection" },
+  ]}
+  org={{ label: "GoBabyGo Thailand", icon: "G", iconBg: "bg-olive text-paper" }}
+  title="Building a national volunteer program that gives kids with mobility challenges modified ride-on cars."
+  meta={{
+    role: "Founder",
+    context: "Nonprofit",
+    timeline: "2021 – 2024",
+  }}
+  next={{ href: "/work/illinihappenings", label: "Illini Happenings" }}
+>
+
+<div className="rounded-2xl overflow-hidden bg-paper-soft border border-line aspect-[16/10] mb-20">
+  <GobabyGoVisual />
+</div>
+
+<CaseStudySection
+  id="origin"
+  label="Origin"
+  headline="Started as a single chapter in Bangkok modifying a ride-on car for one kid who needed mobility."
+>
+
+Grew into a national volunteer-run program that builds and donates these cars to families across Thailand.
+
+TODO: expand on the first build — who the kid was, what the modification involved, what made it click.
+
+</CaseStudySection>
+
+<CaseStudySection
+  id="scale"
+  label="Scaling"
+  headline="From one chapter in Bangkok to 7 chapters across Thai universities."
+>
+
+TODO: how you grew chapters, recruited and trained volunteers, navigated logistics, sourced cars and parts, partnered with families.
+
+</CaseStudySection>
+
+<CaseStudySection
+  id="outcomes"
+  label="By the Numbers"
+  headline="7 chapters. 200+ volunteers. 30+ cars built and given to families."
+>
+
+- **7 chapters** across Thai universities, each running independent build days
+- **200+ volunteers** trained in basic electrical and mechanical work
+- **30+ cars** built and given to families with kids who have mobility challenges
+
+</CaseStudySection>
+
+<CaseStudySection
+  id="reflection"
+  label="Reflection"
+  headline="What founding and handing off a nonprofit taught me."
+>
+
+TODO: lessons on succession planning, institutional knowledge, when to hand off, what to keep.
+
+</CaseStudySection>
+
+</CaseStudyLayout>

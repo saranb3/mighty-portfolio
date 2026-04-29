@@ -1,0 +1,73 @@
+import { CaseStudyLayout, CaseStudySection } from "@/components/case-study-layout";
+import { AirestateVisual } from "@/components/visuals";
+
+export const metadata = {
+  title: "AirEstate — Listing Platform Backend | Mighty Burapachaisri",
+  description:
+    "Backend services for a rental listing platform. Built ingestion, normalization, and ranked retrieval over messy multi-source feed data.",
+};
+
+<CaseStudyLayout
+  sections={[
+    { id: "problem", label: "Problem" },
+    { id: "approach", label: "Approach" },
+    { id: "outcomes", label: "Outcomes" },
+    { id: "reflection", label: "Reflection" },
+  ]}
+  org={{ label: "AirEstate", icon: "A", iconBg: "bg-rust text-paper" }}
+  title="Making property search fast and trustworthy on top of messy listing data."
+  meta={{
+    role: "Backend Engineer",
+    context: "Internship",
+    timeline: "2023",
+  }}
+  next={{ href: "/work/scribear", label: "ScribeAR" }}
+>
+
+<div className="rounded-2xl overflow-hidden bg-paper-soft border border-line aspect-[16/10] mb-20">
+  <AirestateVisual />
+</div>
+
+<CaseStudySection
+  id="problem"
+  label="Problem"
+  headline="Property search has to feel fast and trustworthy when the underlying listing data is messy, partial, and constantly updating."
+>
+
+TODO: expand on the problem space — how listings change, where the data quality breaks down, and what users actually want from a search experience.
+
+</CaseStudySection>
+
+<CaseStudySection
+  id="approach"
+  label="Approach"
+  headline="Pipeline that reconciles multiple feed sources into a unified listing schema, then ranks for retrieval."
+>
+
+- Backend services for the rental listing search experience: ingestion, normalization, and ranked retrieval
+- Data pipeline that reconciles multiple feed sources into a unified listing schema
+- First production codebase I shipped to a live user base — a real lesson in caching, indexing, and writing boring code that doesn't break
+
+</CaseStudySection>
+
+<CaseStudySection
+  id="outcomes"
+  label="Outcomes"
+  headline="Shipped to live users."
+>
+
+TODO: add concrete numbers — listing volume processed, query latency, search quality lift.
+
+</CaseStudySection>
+
+<CaseStudySection
+  id="reflection"
+  label="Reflection"
+  headline="What I'd do differently next time."
+>
+
+TODO: lessons learned from shipping production backend code for the first time.
+
+</CaseStudySection>
+
+</CaseStudyLayout>

@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* Self-hosted Neulis Cursive Black — for the hero display headline */
+@font-face {
+  font-family: "Neulis Cursive";
+  src: url("/fonts/neulis-cursive-black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* Brand color tokens — Dhvani-inspired high-contrast B&W with warm accents */
   --color-paper: #f4f1ea;
@@ -19,7 +28,7 @@
   --color-cream-warm: #f1ead8;
 
   /* Typography — set up via next/font in lib/fonts.ts and applied in layout */
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-dm-sans);
   --font-mono: var(--font-jetbrains);
   --font-serif: var(--font-fraunces);
 }

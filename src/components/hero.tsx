@@ -7,22 +7,23 @@ export function Hero() {
       {/* Vertical divider — independent of column heights */}
       <div
         aria-hidden
-        className="hidden lg:block absolute left-[58%] top-40 bottom-20 w-px bg-line fade-up"
+        className="hidden lg:block absolute left-[58%] top-20 bottom-20 w-px bg-line fade-up"
         style={{ animationDelay: "0.5s" }}
       />
       <div className="grid grid-cols-1 lg:grid-cols-[6fr_4fr]">
         {/* LEFT — headline */}
         <div className="px-8 lg:px-16 pt-40 pb-20 flex flex-col">
           <h1
-            className="display-serif text-[88px] font-bold leading-[1] -tracking-[0.02em] mb-10 text-[#233] fade-up"
+            className="text-[80px] leading-[1] tracking-[0.02em] mb-4 text-[#233] fade-up"
             style={{
+              fontFamily: '"Neulis Cursive", cursive',
               textShadow:
-                "0 0 8px rgba(0,0,0,0.15), 0 0 4px rgba(0, 0, 0, 0.1)",
+                "0 1px 2px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.22), 0 4px 16px rgba(0,0,0,0.18), 0 0 24px rgba(0,0,0,0.15), 0 0 6px rgba(0,0,0,0.2)",
               mixBlendMode: "multiply",
               animationDelay: "0.1s",
             }}
           >
-            Hello, I'm <span className="italic text-rust">Mighty!</span>
+            Hello, I'm <span className="">Mighty!</span>
           </h1>
 
           <div className="fade-up" style={{ animationDelay: "0.3s" }}>
@@ -69,8 +70,8 @@ export function Hero() {
             Nice to meet you!
           </h2>
 
-          <p className="font-sans text-[20px] font-medium leading-[1.5] -tracking-[0.005em] text-ink-soft mb-8 max-w-[440px]">
-            I like tinkering with new technologies, building cool things, and solving hard problems!
+          <p className="font-sans text-[20px] font-semibold leading-[1.5] -tracking-[0.005em] text-ink-soft mb-8 max-w-[440px]">
+            I'm currently a Junior studying Computer Science and Statistics at UIUC. I enjoy building cool products and solving hard problems!
           </p>
 
           <div className="flex gap-2.5">

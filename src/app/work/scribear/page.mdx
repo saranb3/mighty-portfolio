@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { CaseStudyLayout, CaseStudySection } from "@/components/case-study-layout";
+import { ScribearVisual } from "@/components/visuals";
 
 export const metadata = {
   title: "ScribeAR — Speech to LaTeX | Mighty Burapachaisri",
@@ -6,33 +7,55 @@ export const metadata = {
     "Building a real-time speech-to-LaTeX parsing layer at the UIUC ScribeAR research lab. +22% accuracy, ~140ms latency.",
 };
 
-<div className="max-w-[760px] mx-auto px-6 lg:px-0 pt-32 pb-24">
+<CaseStudyLayout
+  sections={[
+    { id: "problem", label: "Problem" },
+    { id: "attempt", label: "First Attempt" },
+    { id: "solution", label: "What Worked" },
+    { id: "outcomes", label: "Outcomes" },
+    { id: "reflection", label: "Reflection" },
+  ]}
+  org={{ label: "UIUC ScribeAR Lab", icon: "S", iconBg: "bg-[#13294b] text-paper" }}
+  title="Turning spoken mathematics into rendered LaTeX in real time."
+  meta={{
+    role: "Research Assistant",
+    context: "Accessibility Research",
+    timeline: "2024",
+  }}
+  next={{ href: "/work/thaisa", label: "Thai Student Association" }}
+>
 
-<Link href="/#work" className="font-mono text-xs tracking-widest uppercase text-ink-soft no-underline hover:text-ink">
-  ← Back to work
-</Link>
-
-<div className="font-mono text-[11px] tracking-widest text-rust uppercase mt-12 mb-4">
-  Research · UIUC · 2024
+<div className="rounded-2xl overflow-hidden bg-paper-soft border border-line aspect-[16/10] mb-20">
+  <ScribearVisual />
 </div>
 
-# ScribeAR — Speech to LaTeX
-
-**TL;DR:** I rebuilt the tokenizer in ScribeAR's speech-to-equation pipeline so it could disambiguate between phrases that sound the same but mean different things mathematically. Result: +22% accuracy lift over baseline, ~140ms P95 latency end-to-end.
-
----
-
-## The problem
+<CaseStudySection
+  id="problem"
+  label="Problem"
+  headline="ScribeAR worked for prose but fell apart on equations — phrases that sound the same can mean different things mathematically."
+>
 
 ScribeAR is an accessibility tool that converts spoken language into rendered LaTeX in real time, primarily for blind and low-vision students taking math-heavy classes.
 
 The existing system worked well for prose but fell apart on equations. The model was treating "x squared" and "x times 2" as essentially the same input. So was "the integral of f of x" and "the integral, of f of x" — comma matters.
 
-## What I tried first
+</CaseStudySection>
+
+<CaseStudySection
+  id="attempt"
+  label="First Attempt"
+  headline="The naive fix — pipe everything into a math-aware LLM — spiked latency to 800ms+ and hallucinated structure."
+>
 
 The naive fix is to feed the whole transcribed sentence into a math-aware LLM and ask it to output LaTeX. This worked, but latency spiked to 800ms+ and the model hallucinated structure that wasn't there.
 
-## What actually worked
+</CaseStudySection>
+
+<CaseStudySection
+  id="solution"
+  label="What Worked"
+  headline="Three stages: tokenize with context, parse to an AST, render at the structural level."
+>
 
 I broke the pipeline into three stages:
 
@@ -42,21 +65,28 @@ I broke the pipeline into three stages:
 
 The key insight was that math has way fewer ambiguous tokens than natural language. Once you commit to an AST, you can recover from a lot of speech recognition errors that would otherwise cascade into wrong equations.
 
-## Outcomes
+</CaseStudySection>
+
+<CaseStudySection
+  id="outcomes"
+  label="Outcomes"
+  headline="+22% accuracy lift, ~140ms P95 latency, shipped to live use at the UIUC ScribeAR research lab."
+>
 
 - **+22% accuracy lift** over the previous baseline on our internal eval set of 200 spoken equations
 - **~140ms P95 latency** from audio chunk to rendered LaTeX
 - Shipped to the live ScribeAR research lab and used by students
 
-## What I'd do differently
+</CaseStudySection>
+
+<CaseStudySection
+  id="reflection"
+  label="Reflection"
+  headline="The eval set was too small. Next iteration would build a much larger synthetic eval before more model work."
+>
 
 The eval set was too small. 200 equations is enough to detect a 22% lift but not enough to know which classes of mistakes we're still getting wrong. Next iteration would build a much larger synthetic eval before any further model work.
 
----
+</CaseStudySection>
 
-<div className="mt-16 pt-8 border-t border-line flex justify-between font-mono text-xs tracking-widest text-ink-soft">
-  <span>NEXT →</span>
-  <Link href="/work/zebra" className="text-ink no-underline hover:underline">Zebra Technologies</Link>
-</div>
-
-</div>
+</CaseStudyLayout>
