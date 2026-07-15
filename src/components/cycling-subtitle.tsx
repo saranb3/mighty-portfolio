@@ -9,8 +9,10 @@ const facts: string[] = [
   "I can juggle the ball 200 times",
   "I value empathy and kindness", 
   "I destress by weight lifting and running",
-  "I hate sour coffee",
-  "I can type 160 wpm"
+  "I like cold brews",
+  "I can type 160 wpm",
+  "I like finding recipes on TikTok",
+  "My favorite drink is Dr. Pepper"
 
 ];
 

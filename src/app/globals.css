@@ -28,7 +28,7 @@
   --color-cream-warm: #f1ead8;
 
   /* Typography — set up via next/font in lib/fonts.ts and applied in layout */
-  --font-sans: var(--font-dm-sans);
+  --font-sans: var(--font-general-sans);
   --font-mono: var(--font-jetbrains);
   --font-serif: var(--font-fraunces);
 }

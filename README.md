@@ -1,4 +1,4 @@
-# Mighty Saranborirak — Portfolio
+# Mighty Burapachaisri — Portfolio
 
 Personal portfolio site. Next.js 15 (App Router) + Tailwind v4 + MDX.
 

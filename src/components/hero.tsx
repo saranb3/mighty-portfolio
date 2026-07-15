@@ -7,18 +7,18 @@ export function Hero() {
       {/* Vertical divider — independent of column heights */}
       <div
         aria-hidden
-        className="hidden lg:block absolute left-[58%] top-15 bottom-0 w-px bg-line fade-up"
+        className="hidden lg:block absolute left-[58%] top-15 bottom-10 w-px bg-line fade-up"
         style={{ animationDelay: "0.5s" }}
       />
       <div className="grid grid-cols-1 lg:grid-cols-[6fr_4fr]">
         {/* LEFT — headline */}
-        <div className="px-8 lg:px-16 pt-40 pb-0 flex flex-col">
+        <div className="px-8 lg:px-12 pt-48 pb-20 flex flex-col">
           <h1
             className="text-[80px] leading-[1] tracking-[0.02em] mb-4 text-[#233] fade-up"
             style={{
               fontFamily: '"Neulis Cursive", cursive',
               textShadow:
-                "0 1px 2px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.22), 0 4px 16px rgba(0,0,0,0.18), 0 0 24px rgba(0,0,0,0.15), 0 0 6px rgba(0,0,0,0.2)",
+                "0 1px 2px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.22), 0 4x 16px rgba(0,0,0,0.18), 0 0 24px rgba(0,0,0,0.15), 0 0 6px rgba(0,0,0,0.2)",
               mixBlendMode: "multiply",
               animationDelay: "0.1s",
             }}
@@ -35,18 +35,18 @@ export function Hero() {
             style={{ animationDelay: "0.55s" }}
           >
             <div>
-              <div className="font-sans text-[23px] font-semibold text-ink mb-.3 -tracking-[0.008em] whitespace-nowrap">
+              <div className="font-sans text-[28px] font-[540] text-ink mb-.3 -tracking-[0.008em] whitespace-nowrap">
                 Currently
               </div>
-              <div className="font-sans text-[23px] font-semibold text-ink-soft -tracking-[0.008em] inline-flex items-center gap-2 whitespace-nowrap">
+              <div className="font-sans text-[28px] font-[540] text-ink-soft -tracking-[0.008em] inline-flex items-center gap-2 whitespace-nowrap">
                 PM @ Zebra
               </div>
             </div>
             <div>
-              <div className="font-sans text-[23px] font-semibold text-ink mb-.3 -tracking-[0.008em] whitespace-nowrap">
+              <div className="font-sans text-[28px] font-[540] text-ink mb-.3 -tracking-[0.008em] whitespace-nowrap">
                 Previously at
               </div>
-              <div className="font-sans text-[23px] font-semibold text-ink-soft -tracking-[0.008em] whitespace-nowrap">
+              <div className="font-sans text-[28px] font-[540] text-ink-soft -tracking-[0.008em] whitespace-nowrap">
                 Bangkok Bank, AirEstate
               </div>
             </div>
@@ -55,7 +55,7 @@ export function Hero() {
 
         {/* RIGHT — sidebar */}
         <aside
-          className="border-t lg:border-t-0 border-line px-12 pt-40 pb-0 fade-up"
+          className="border-t lg:border-t-0 border-line px-8 lg:px-12 pt-40 pb-20 fade-up"
           style={{ animationDelay: "0.4s" }}
         >
           <Image
@@ -66,12 +66,13 @@ export function Hero() {
             className="w-full max-w-[180px] aspect-square object-cover rounded-full object-[center_60%]"
           />
 
-          <h2 className="font-sans text-[28px] font-bold text-ink mt-8 mb-4 -tracking-[0.04em] opacity-80">
+          <h2 className="font-sans text-[28px] font-semibold text-ink mt-8 mb-4 tracking-[0.01em] opacity-80">
             Nice to meet you!
           </h2>
 
-          <p className="font-sans text-[23px] font-semibold leading-[1.5] -tracking-[0.005em] text-ink-soft mb-3 max-w-[440px] lg:max-w-none lg:mr-4 lg:text-left lg:[word-spacing:-0.01em]">
-            I'm a rising senior studying CS & Stats at the University of Illinois. I enjoy building user-facing products, tinkering with new technologies, and solving hard problems!
+          <p className="font-sans text-[23px] font-[540] leading-[1.5] -tracking-[0.005em] text-ink-soft mb-3 max-w-[440px] lg:max-w-none lg:mr-4 lg:text-left tracking-[0.02em] ">
+            I'm a rising senior studying CS & Stats at the University of Illinois at Urbana Champaign.
+            I enjoy building user-facing products, tinkering with new technologies, and solving hard problems!
           </p>
 
           <div className="flex items-center gap-3">

@@ -1,67 +1,112 @@
 import Link from "next/link";
-import { projects } from "@/content/projects";
+import { projects, type Project } from "@/content/projects";
 import { visuals } from "./visuals";
 
 export function ProjectGrid() {
   return (
-    <section className="px-8 lg:px-16 pt-13 pb-20">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-14">
-        {projects.map((project) => {
-          const Visual = visuals[project.visualKey];
-          const description =
-            project.framing === "narrative"
-              ? project.narrative
-              : project.question?.replace(/\*\*/g, "");
-          const year = project.role.match(/\d{4}/)?.[0] ?? "";
-          const org = project.name;
+    <section className="px-8 lg:px-12 pt-13gi pb-20">
+      <div className="mx-auto max-w-7xl">
+        <header className="mb-24 lg:mb-32">
+          <h2 className="font-[400]display-serif text-[56px] lg:text-[72px] leading-[1] -tracking-[0.02em] text-ink text-balance">
+            Selected Works
+          </h2>
+        </header>
 
-          return (
-            <Link
+        <ol className="space-y-32 lg:space-y-40">
+          {projects.map((project, i) => (
+            <li
               key={project.slug}
-              href={project.ctaHref}
-              className="group block no-underline text-ink"
+              className="fade-up"
+              style={{ animationDelay: `${Math.min(i, 5) * 80}ms` }}
             >
-              {/* Image / visual area */}
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-paper-soft border border-line mb-5 transition-transform duration-500 group-hover:-translate-y-1 group-hover:shadow-lg">
-                {project.statusLabel && project.status === "shipped" && (
-                  <span className="absolute top-3 right-3 z-10 inline-flex items-center gap-1 text-[10px] tracking-widest uppercase font-mono font-medium px-2 py-1 rounded-full bg-paper text-ink-soft border border-line">
-                    Shipped ↗
-                  </span>
-                )}
-                <div className="absolute inset-0 flex items-center justify-center p-6">
-                  {Visual && <Visual />}
-                </div>
-              </div>
-
-              {/* Title */}
-              <h3 className="font-sans text-[22px] font-bold text-ink mb-2 -tracking-[0.01em] group-hover:opacity-80 transition-opacity">
-                {project.name}
-                {project.nameItalic && (
-                  <span className="font-normal text-ink-soft"> {project.nameItalic}</span>
-                )}
-                {project.status === "shipped" && (
-                  <span className="ml-2 inline-flex items-center text-[11px] tracking-widest uppercase font-mono font-medium text-ink-soft">
-                    SHIPPED ↗
-                  </span>
-                )}
-              </h3>
-
-              {/* Description */}
-              {description && (
-                <p className="font-sans text-base text-ink-soft leading-[1.5] mb-4">
-                  {description}
-                </p>
-              )}
-
-              {/* Footer: org · year */}
-              <div className="font-sans text-sm font-semibold text-ink">
-                {org}
-                {year && <span className="text-ink-soft"> · {year}</span>}
-              </div>
-            </Link>
-          );
-        })}
+              <ProjectRow project={project} />
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );
+}
+
+function ProjectRow({ project }: { project: Project }) {
+  const Visual = visuals[project.visualKey];
+  const description =
+    project.framing === "narrative"
+      ? project.narrative
+      : project.question?.replace(/\*\*/g, "");
+
+  const { year, roleLabel } = parseRole(project.role);
+  const isShipped = project.status === "shipped";
+
+  return (
+    <Link
+      href={project.ctaHref}
+      className="group block no-underline text-ink"
+    >
+      <div className="grid lg:grid-cols-[5fr_6fr] lg:gap-x-20 items-center">
+        {/* Image card */}
+        <div className="relative aspect-[4/3] rounded-3xl bg-paper-soft border border-line overflow-hidden transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1.5 group-hover:shadow-[0_24px_60px_-24px_rgba(10,10,10,0.18)]">
+          <span className="absolute top-5 left-5 z-10 inline-flex items-center rounded-full bg-ink text-paper font-mono text-[10px] uppercase tracking-[0.18em] px-3 py-1.5">
+            {project.statusLabel}
+            {isShipped && <span className="ml-1">↗</span>}
+          </span>
+          <div className="absolute inset-0 flex items-center justify-center p-8 lg:p-12">
+            {Visual && <Visual />}
+          </div>
+        </div>
+
+        {/* Text */}
+        <div className="flex flex-col justify-center pt-10 lg:pt-0">
+          <h3 className="font-sans text-[36px] lg:text-[44px] font-[540] leading-[1.15] -tracking-[0.01em] text-ink text-balance transition-opacity duration-300 group-hover:opacity-90">
+            {project.name}
+            {project.nameItalic && (
+              <span className="ital text-ink-soft"> {project.nameItalic}</span>
+            )}
+          </h3>
+
+          {description && (
+            <p className="mt-5 max-w-[56ch] text-[18px] leading-[1.6] text-ink-soft">
+              {description}
+            </p>
+          )}
+
+          <div className="mt-10">
+            <div className="font-mono text-xs uppercase tracking-[0.18em] text-ink mb-4">
+              Project info
+            </div>
+            <dl>
+              <div className="flex justify-between items-baseline py-4 border-t border-line">
+                <dt className="text-[15px] text-ink-soft">Year</dt>
+                <dd className="text-[15px] text-ink">{year}</dd>
+              </div>
+              <div className="flex justify-between items-baseline py-4 border-t border-b border-line">
+                <dt className="text-[15px] text-ink-soft">Role</dt>
+                <dd className="text-[15px] text-ink">{roleLabel}</dd>
+              </div>
+            </dl>
+          </div>
+
+          <span className="mt-10 inline-flex items-center gap-2 w-fit text-rust font-mono text-xs uppercase tracking-[0.18em] underline underline-offset-[6px] decoration-[1.5px]">
+            {project.ctaLabel}
+            <span aria-hidden>↗</span>
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+function parseRole(role: string): { year: string; roleLabel: string } {
+  const yearMatch = role.match(/\d{4}(?:\s*[–-]\s*\d{4})?/);
+  const year = yearMatch?.[0] ?? "—";
+  let roleLabel = role;
+  if (yearMatch) {
+    roleLabel = roleLabel.replace(yearMatch[0], "");
+  }
+  roleLabel = roleLabel
+    .replace(/^\s*·\s*/, "")
+    .replace(/\s*·\s*$/, "")
+    .trim();
+  if (!roleLabel) roleLabel = "—";
+  return { year, roleLabel };
 }

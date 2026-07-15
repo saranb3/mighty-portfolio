@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { dmSans, fraunces, jetbrainsMono, braahOne } from "@/lib/fonts";
+import { dmSans, fraunces, jetbrainsMono, braahOne, generalSans } from "@/lib/fonts";
 import { Nav } from "@/components/nav";
 import "./globals.css";
 
@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${fraunces.variable} ${jetbrainsMono.variable} ${braahOne.variable}`}
+      className={`${dmSans.variable} ${fraunces.variable} ${jetbrainsMono.variable} ${braahOne.variable} ${generalSans.variable}`}
     >
       <body>
         <Nav />

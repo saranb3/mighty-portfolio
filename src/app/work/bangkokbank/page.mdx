@@ -35,11 +35,9 @@ export const metadata = {
   label="Problem"
   headline="Thailand expects 35.5M international tourists in 2025, but fragmented safety information is pulling inbound numbers down."
 >
+  Recent safety incidents — a high-profile kidnapping, the Thailand–Cambodia border tension, scattered scam reports — pulled inbound numbers down 6% year-over-year. The information tourists *do* get is fragmented: news on one app, emergency numbers buried in a hotel pamphlet, embassy contacts on a different government site, all in Thai.
 
-Recent safety incidents — a high-profile kidnapping, the Thailand–Cambodia border tension, scattered scam reports — pulled inbound numbers down 6% year-over-year. The information tourists *do* get is fragmented: news on one app, emergency numbers buried in a hotel pamphlet, embassy contacts on a different government site, all in Thai.
-
-We were asked to propose a product that could rebuild traveler trust. We built TripBuddy.
-
+  We were asked to propose a product that could rebuild traveler trust. We built TripBuddy.
 </CaseStudySection>
 
 <CaseStudySection
@@ -47,12 +45,12 @@ We were asked to propose a product that could rebuild traveler trust. We built T
   label="Role"
   headline="Officially research and product feasibility — in practice, much more."
 >
-
-- Led 8 user interviews with international tourists in Bangkok
-- Owned the product direction and feature scoping argument
-- Designed the **Home, SOS, Area Safety, and News/Area Detail** screens in Figma after our planned prototyper hit a tooling wall
-- Co-presented to Bangkok Bank leadership at the final pitch
-
+  <ul className="space-y-3 list-none pl-0">
+    <li className="pl-5 relative before:content-[''] before:absolute before:left-0 before:top-3 before:w-3 before:h-px before:bg-ink">Led 8 user interviews with international tourists in Bangkok</li>
+    <li className="pl-5 relative before:content-[''] before:absolute before:left-0 before:top-3 before:w-3 before:h-px before:bg-ink">Owned the product direction and feature scoping argument</li>
+    <li className="pl-5 relative before:content-[''] before:absolute before:left-0 before:top-3 before:w-3 before:h-px before:bg-ink">Designed the <strong className="font-semibold">Home, SOS, Area Safety, and News/Area Detail</strong> screens in Figma after our planned prototyper hit a tooling wall</li>
+    <li className="pl-5 relative before:content-[''] before:absolute before:left-0 before:top-3 before:w-3 before:h-px before:bg-ink">Co-presented to Bangkok Bank leadership at the final pitch</li>
+  </ul>
 </CaseStudySection>
 
 <CaseStudySection
@@ -60,15 +58,15 @@ We were asked to propose a product that could rebuild traveler trust. We built T
   label="Research"
   headline="One interview reframed the entire brief — from 'safety app' to 'single trusted hub.'"
 >
+  The interview that changed the product was with a Chinese tourist who'd been in Bangkok for four days. When I asked how he found out about a recent incident near his hotel, he listed five different sources — Line groups, WeChat news, his embassy's website, a Thai news site translated through Google, and a friend back home. None of them agreed on what had happened or what to do.
 
-The interview that changed the product was with a Chinese tourist who'd been in Bangkok for four days. When I asked how he found out about a recent incident near his hotel, he listed five different sources — Line groups, WeChat news, his embassy's website, a Thai news site translated through Google, and a friend back home. None of them agreed on what had happened or what to do.
+  <blockquote className="border-l-2 border-rust pl-6 my-2 text-ink">
+    "In China I just open one app. Here I open ten and trust none of them."
+  </blockquote>
 
-> "In China I just open one app. Here I open ten and trust none of them."
+  That reframed the brief. The problem wasn't a missing safety app — it was that <strong className="font-semibold">safety information existed but was scattered across channels with no synthesis</strong>. The Chinese super-app model (one app, many services, trusted because it's official) was the mental model our users already had. The opportunity was to bring that model to inbound tourism.
 
-That reframed the brief. The problem wasn't a missing safety app — it was that **safety information existed but was scattered across channels with no synthesis**. The Chinese super-app model (one app, many services, trusted because it's official) was the mental model our users already had. The opportunity was to bring that model to inbound tourism.
-
-This became our north star: **TripBuddy as a single trusted hub** — emergency, news, embassy, etiquette, basic services — rather than a thin safety layer on top of existing fragmented tools.
-
+  This became our north star: <strong className="font-semibold">TripBuddy as a single trusted hub</strong> — emergency, news, embassy, etiquette, basic services — rather than a thin safety layer on top of existing fragmented tools.
 </CaseStudySection>
 
 <CaseStudySection
@@ -76,29 +74,27 @@ This became our north star: **TripBuddy as a single trusted hub** — emergency,
   label="Design"
   headline="Designing the News / Area Detail screen for a panicking foreigner."
 >
+  The screen I'm proudest of is the <strong className="font-semibold">News / Area Detail screen</strong> — what a user sees when they tap into a flagged area on the map.
 
-The screen I'm proudest of is the **News / Area Detail screen** — what a user sees when they tap into a flagged area on the map.
+  <div className="my-8 rounded-2xl border border-line bg-paper-soft aspect-[16/10] flex items-center justify-center font-mono text-xs tracking-widest text-ink-soft uppercase not-prose">
+    Screenshot: News / Area Detail screen
+  </div>
 
-<div className="my-8 rounded-2xl border border-line bg-paper-soft aspect-[16/10] flex items-center justify-center font-mono text-xs tracking-widest text-ink-soft uppercase">
-  Screenshot: News / Area Detail screen
-</div>
-
-The design constraint: a foreign tourist, possibly under stress, possibly with limited English, needs to answer three questions in under five seconds.
-
-1. How bad is this?
-2. What's actually happening?
-3. What should I do right now?
-
-I structured the screen as a strict top-to-bottom answer to those three questions:
-
-- **Location + risk gauge** at the top — instant severity read without reading any text
-- **High-risk banner** in plain language — one sentence, one action verb
-- **Current Situation** as a dated bullet list — facts, not narrative
-- **Recommended Actions** as a separate block — verbs first ("Stay indoors," "Call 191 only with new info")
-- **Source updates** at the bottom — for users who want to verify before acting
-
-Separating *situation* from *action* was the key call. Most news apps blend them, which forces a stressed user to extract instructions from prose. We made the instructions a discrete block they could act on without re-reading.
-
+  The design constraint: a foreign tourist, possibly under stress, possibly with limited English, needs to answer three questions in under five seconds.
+  <ol className="space-y-2 pl-6 list-decimal marker:text-ink-soft">
+    <li>How bad is this?</li>
+    <li>What's actually happening?</li>
+    <li>What should I do right now?</li>
+  </ol>
+  I structured the screen as a strict top-to-bottom answer to those three questions:
+  <ul className="space-y-3 list-none pl-0">
+    <li className="pl-5 relative before:content-[''] before:absolute before:left-0 before:top-3 before:w-3 before:h-px before:bg-ink"><strong className="font-semibold">Location + risk gauge</strong> at the top — instant severity read without reading any text</li>
+    <li className="pl-5 relative before:content-[''] before:absolute before:left-0 before:top-3 before:w-3 before:h-px before:bg-ink"><strong className="font-semibold">High-risk banner</strong> in plain language — one sentence, one action verb</li>
+    <li className="pl-5 relative before:content-[''] before:absolute before:left-0 before:top-3 before:w-3 before:h-px before:bg-ink"><strong className="font-semibold">Current Situation</strong> as a dated bullet list — facts, not narrative</li>
+    <li className="pl-5 relative before:content-[''] before:absolute before:left-0 before:top-3 before:w-3 before:h-px before:bg-ink"><strong className="font-semibold">Recommended Actions</strong> as a separate block — verbs first ("Stay indoors," "Call 191 only with new info")</li>
+    <li className="pl-5 relative before:content-[''] before:absolute before:left-0 before:top-3 before:w-3 before:h-px before:bg-ink"><strong className="font-semibold">Source updates</strong> at the bottom — for users who want to verify before acting</li>
+  </ul>
+  Separating <em className="italic">situation</em> from <em className="italic">action</em> was the key call. Most news apps blend them, which forces a stressed user to extract instructions from prose. We made the instructions a discrete block they could act on without re-reading.
 </CaseStudySection>
 
 <CaseStudySection
@@ -106,11 +102,11 @@ Separating *situation* from *action* was the key call. Most news apps blend them
   label="Reflection"
   headline="Three things I'd do differently next time."
 >
-
-1. **The illustrations on Home and SOS are wrong for the brand promise.** Cute 3D icons on a "Crime" or "Injury" tile undercut the trust we were trying to build. NanNam and I discussed this late and didn't have time to swap them. A second pass would replace them with flatter, more neutral iconography.
-2. **The Area Safety map needs a confidence indicator.** Our zones were AI-generated from news scraping. Users have to know how recent and how reliable each zone's data is. Without that, the map is asking for blind trust we hadn't earned.
-3. **I should have wireframed before jumping into hi-fi.** When Boom handed off the Figma file, I went straight to polished screens because the deadline was tight. The result was that some interaction decisions (like the SOS-button-plus-six-categories pattern) didn't get the scrutiny they deserved. Lo-fi first would have surfaced those questions earlier.
-
+  <ol className="space-y-5 list-decimal pl-6 marker:font-mono marker:text-ink-soft marker:text-sm">
+    <li><strong className="font-semibold">The illustrations on Home and SOS are wrong for the brand promise.</strong> Cute 3D icons on a "Crime" or "Injury" tile undercut the trust we were trying to build. NanNam and I discussed this late and didn't have time to swap them. A second pass would replace them with flatter, more neutral iconography.</li>
+    <li><strong className="font-semibold">The Area Safety map needs a confidence indicator.</strong> Our zones were AI-generated from news scraping. Users have to know how recent and how reliable each zone's data is. Without that, the map is asking for blind trust we hadn't earned.</li>
+    <li><strong className="font-semibold">I should have wireframed before jumping into hi-fi.</strong> When Boom handed off the Figma file, I went straight to polished screens because the deadline was tight. The result was that some interaction decisions (like the SOS-button-plus-six-categories pattern) didn't get the scrutiny they deserved. Lo-fi first would have surfaced those questions earlier.</li>
+  </ol>
 </CaseStudySection>
 
 <CaseStudySection
@@ -118,13 +114,12 @@ Separating *situation* from *action* was the key call. Most news apps blend them
   label="Outcome"
   headline="Won 'Most Popular' at the BBL hackathon. Pitched to Bangkok Bank leadership."
 >
-
-- **Won "Most Popular" at the BBL Student Internship Program hackathon**
-- Presented to Bangkok Bank leadership; feedback was that the product direction was strong but the build cost (real-time AI moderation across multiple languages, government API integrations) made it a hard fit for the bank's current roadmap
-- The team continues to use the case as a reference for the kind of cross-functional ambition the program is meant to develop
-
-The bank's feasibility note was the right pushback. If I were to scope a v2, I'd cut the scope to a single high-confidence loop — verified news + one-tap embassy contact — and ship that before earning the right to expand.
-
+  <ul className="space-y-3 list-none pl-0">
+    <li className="pl-5 relative before:content-[''] before:absolute before:left-0 before:top-3 before:w-3 before:h-px before:bg-ink"><strong className="font-semibold">Won "Most Popular" at the BBL Student Internship Program hackathon</strong></li>
+    <li className="pl-5 relative before:content-[''] before:absolute before:left-0 before:top-3 before:w-3 before:h-px before:bg-ink">Presented to Bangkok Bank leadership; feedback was that the product direction was strong but the build cost (real-time AI moderation across multiple languages, government API integrations) made it a hard fit for the bank's current roadmap</li>
+    <li className="pl-5 relative before:content-[''] before:absolute before:left-0 before:top-3 before:w-3 before:h-px before:bg-ink">The team continues to use the case as a reference for the kind of cross-functional ambition the program is meant to develop</li>
+  </ul>
+  The bank's feasibility note was the right pushback. If I were to scope a v2, I'd cut the scope to a single high-confidence loop — verified news + one-tap embassy contact — and ship that before earning the right to expand.
 </CaseStudySection>
 
 </CaseStudyLayout>

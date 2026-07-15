@@ -1,4 +1,14 @@
 import { DM_Sans, Fraunces, JetBrains_Mono, Braah_One } from "next/font/google";
+import localFont from "next/font/local";
+
+export const generalSans = localFont({
+  variable: "--font-general-sans",
+  display: "swap",
+  src: [
+    { path: "../../public/fonts/general-sans/GeneralSans-Variable.woff2", weight: "200 700", style: "normal" },
+    { path: "../../public/fonts/general-sans/GeneralSans-VariableItalic.woff2", weight: "200 700", style: "italic" },
+  ],
+});
 
 export const dmSans = DM_Sans({
   subsets: ["latin"],
