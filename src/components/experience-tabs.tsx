@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { experiences } from "@/content/experience";
+import { ProductDeck } from "./product-deck";
 
 export function ExperienceTabs() {
   const [activeId, setActiveId] = useState(experiences[0].id);
@@ -139,28 +140,35 @@ export function ExperienceTabs() {
               ))}
             </ul>
 
-            {active.href && (
-              <Link
-                href={active.href}
-                target={active.href.startsWith("http") ? "_blank" : undefined}
-                rel={
-                  active.href.startsWith("http")
-                    ? "noopener noreferrer"
-                    : undefined
-                }
-                className="group mt-8 inline-flex items-center gap-1.5 text-[16px] font-semibold text-ink no-underline"
-              >
-                <span className="underline underline-offset-4 decoration-2">
-                  {active.ctaLabel ?? "Learn more"}
-                </span>
-                <span
-                  aria-hidden
-                  className="transition-transform duration-300 ease-out group-hover:translate-x-1"
-                >
-                  →
-                </span>
-              </Link>
-            )}
+            <ProductDeck
+              companyId={active.id}
+              cta={
+                active.href ? (
+                  <Link
+                    href={active.href}
+                    target={
+                      active.href.startsWith("http") ? "_blank" : undefined
+                    }
+                    rel={
+                      active.href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    className="group inline-flex items-center gap-1.5 text-[16px] font-semibold text-ink no-underline"
+                  >
+                    <span className="underline underline-offset-4 decoration-2">
+                      {active.ctaLabel ?? "Learn more"}
+                    </span>
+                    <span
+                      aria-hidden
+                      className="transition-transform duration-300 ease-out group-hover:translate-x-1"
+                    >
+                      →
+                    </span>
+                  </Link>
+                ) : null
+              }
+            />
           </div>
         </div>
       </div>
