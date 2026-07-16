@@ -122,17 +122,19 @@ export function ProjectCard({ project }: { project: Project }) {
             ))}
           </div>
 
-          <Link
-            href={project.ctaHref}
-            className={`mt-6 inline-flex items-center gap-2 font-medium text-base no-underline group ${isDark ? "text-paper" : "text-ink"}`}
-          >
-            {project.ctaLabel}
-            <span
-              className="block w-8 h-px transition-all duration-500 group-hover:w-16"
-              style={{ background: "currentColor" }}
-            />
-            →
-          </Link>
+          {project.ctaHref && (
+            <Link
+              href={project.ctaHref}
+              className={`mt-6 inline-flex items-center gap-2 font-medium text-base no-underline group ${isDark ? "text-paper" : "text-ink"}`}
+            >
+              {project.ctaLabel}
+              <span
+                className="block w-8 h-px transition-all duration-500 group-hover:w-16"
+                style={{ background: "currentColor" }}
+              />
+              →
+            </Link>
+          )}
         </div>
       </div>
 

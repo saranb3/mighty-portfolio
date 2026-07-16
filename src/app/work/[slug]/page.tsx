@@ -120,7 +120,7 @@ export default async function ProjectPage({
         <div className="mt-16 pt-8 border-t border-line flex justify-between items-center font-mono text-xs tracking-widest text-ink-soft">
           <span>NEXT →</span>
           <Link
-            href={next.ctaHref}
+            href={next.ctaHref ?? `/work/${next.slug}`}
             className="text-ink no-underline hover:underline"
           >
             {next.name}

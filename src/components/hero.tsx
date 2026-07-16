@@ -1,98 +1,111 @@
 import Image from "next/image";
-import { CyclingSubtitle } from "./cycling-subtitle";
 
+const EMAIL = "saranb3@illinois.edu";
+const RESUME_URL =
+  "https://drive.google.com/file/d/1RaWqsNq4lDRwzBSNSBBXOtucqTldhRCW/view?usp=sharing";
+
+const stickers = [
+  { label: "🐶 I have eight dogs", tilt: "-rotate-6" },
+  { label: "⚽ Liverpool, YWNA!", tilt: "rotate-3" },
+  { label: "☕ Love cold brews", tilt: "-rotate-2" },
+  { label: "✈️ 7 countries so far", tilt: "rotate-6" },
+];
+
+/* "Snapshot" hero — photo-led and personality-forward: a tilted polaroid,
+   fact stickers, the greeting in the headline. Warmth with receipts. */
 export function Hero() {
   return (
-    <section className="relative bg-paper">
-      {/* Vertical divider — independent of column heights */}
-      <div
-        aria-hidden
-        className="hidden lg:block absolute left-[58%] top-15 bottom-10 w-px bg-line fade-up"
-        style={{ animationDelay: "0.5s" }}
-      />
-      <div className="grid grid-cols-1 lg:grid-cols-[6fr_4fr]">
-        {/* LEFT — headline */}
-        <div className="px-8 lg:px-12 pt-48 pb-20 flex flex-col">
+    <section className="relative bg-ground overflow-hidden px-6 lg:px-12 pt-36 lg:pt-44 pb-20 lg:pb-24">
+      <div className="mx-auto max-w-6xl grid lg:grid-cols-[7fr_5fr] gap-14 lg:gap-20 items-center">
+        <div>
           <h1
-            className="text-[80px] leading-[1] tracking-[0.02em] mb-4 text-[#233] fade-up"
-            style={{
-              fontFamily: '"Neulis Cursive", cursive',
-              textShadow:
-                "0 1px 2px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.22), 0 4x 16px rgba(0,0,0,0.18), 0 0 24px rgba(0,0,0,0.15), 0 0 6px rgba(0,0,0,0.2)",
-              mixBlendMode: "multiply",
-              animationDelay: "0.1s",
-            }}
+            className="display font-bold text-ink text-[clamp(2.9rem,6vw,5rem)] leading-[1.02] fade-up"
+            style={{ animationDelay: "0.05s" }}
           >
-            Hello, I'm <span className="">Mighty!</span>
+            Hello, I&rsquo;m Mighty!
           </h1>
 
-          <div className="fade-up" style={{ animationDelay: "0.3s" }}>
-            <CyclingSubtitle />
-          </div>
+          <p
+            className="display mt-5 text-[clamp(1.4rem,2.4vw,1.75rem)] leading-[1.3] font-semibold text-ink max-w-[26ch] fade-up"
+            style={{ animationDelay: "0.15s" }}
+          >
+            Aspiring product manager who loves to build.
+          </p>
+
+          <p
+            className="mt-6 max-w-[52ch] text-[18px] leading-[1.65] font-medium text-ink-soft fade-up"
+            style={{ animationDelay: "0.25s" }}
+          >
+            Rising senior in CS &amp; Stats at UIUC — currently a PM intern at
+            Zebra Technologies, previously Bangkok Bank and AirEstate. Outside
+            of work, you can find me playing football, lifting weights, trying out coffee at new cafes, or taking photos with my Fujifilm!
+          </p>
 
           <div
-            className="grid grid-cols-[auto_auto] gap-x-20 mt-15 fade-up"
-            style={{ animationDelay: "0.55s" }}
+            className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4 fade-up"
+            style={{ animationDelay: "0.35s" }}
           >
-            <div>
-              <div className="font-sans text-[28px] font-[540] text-ink mb-.3 -tracking-[0.008em] whitespace-nowrap">
-                Currently
-              </div>
-              <div className="font-sans text-[28px] font-[540] text-ink-soft -tracking-[0.008em] inline-flex items-center gap-2 whitespace-nowrap">
-                PM @ Zebra
-              </div>
-            </div>
-            <div>
-              <div className="font-sans text-[28px] font-[540] text-ink mb-.3 -tracking-[0.008em] whitespace-nowrap">
-                Previously at
-              </div>
-              <div className="font-sans text-[28px] font-[540] text-ink-soft -tracking-[0.008em] whitespace-nowrap">
-                Bangkok Bank, AirEstate
-              </div>
-            </div>
+            <a
+              href={`mailto:${EMAIL}`}
+              className="inline-flex items-center rounded-full bg-ink px-7 py-3.5 text-[17px] font-semibold text-ground no-underline transition-opacity duration-200 hover:opacity-85"
+            >
+              Say hello
+            </a>
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[17px] font-semibold text-ink underline underline-offset-4 decoration-2"
+            >
+              Resume <span aria-hidden>↗</span>
+            </a>
           </div>
         </div>
 
-        {/* RIGHT — sidebar */}
-        <aside
-          className="border-t lg:border-t-0 border-line px-8 lg:px-12 pt-40 pb-20 fade-up"
-          style={{ animationDelay: "0.4s" }}
-        >
-          <Image
-            src="/images/mighty-3.png"
-            alt="Mighty"
-            width={300}
-            height={375}
-            className="w-full max-w-[180px] aspect-square object-cover rounded-full object-[center_60%]"
-          />
+        {/* Polaroid + stickers */}
+        <div className="relative fade-up" style={{ animationDelay: "0.3s" }}>
+          <figure className="rotate-2 bg-white p-3 pb-14 w-[min(100%,380px)] mx-auto shadow-[0_28px_60px_-28px_rgba(22,21,19,0.4)]">
+            <Image
+              src="/images/mighty-1.png"
+              alt="Mighty at the beach in Santa Monica"
+              width={760}
+              height={950}
+              priority
+              className="w-full aspect-[4/5] object-cover"
+            />
+            <figcaption className="ital absolute bottom-4 left-0 right-0 text-center text-[18px] text-ink-soft">
+              off duty, Santa Monica
+            </figcaption>
+          </figure>
 
-          <h2 className="font-sans text-[28px] font-semibold text-ink mt-8 mb-4 tracking-[0.01em] opacity-80">
-            Nice to meet you!
-          </h2>
-
-          <p className="font-sans text-[23px] font-[540] leading-[1.5] -tracking-[0.005em] text-ink-soft mb-3 max-w-[440px] lg:max-w-none lg:mr-4 lg:text-left tracking-[0.02em] ">
-            I'm a rising senior studying CS & Stats at the University of Illinois at Urbana Champaign.
-            I enjoy building user-facing products, tinkering with new technologies, and solving hard problems!
-          </p>
-
-          <div className="flex items-center gap-3">
-            <a
-              href="https://www.linkedin.com/in/saran-burapachaisri/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              className="inline-flex items-center justify-start opacity-70 transition-opacity hover:opacity-80"
-            >
-              <Image
-                src="/images/linkedin.png"
-                alt="LinkedIn"
-                width={28}
-                height={28}
-                className="w-[28px] h-[28px] object-contain"
-              />
-            </a>
+          {/* Stickers — pinned around the polaroid on large screens */}
+          <div className="hidden lg:block" aria-hidden>
+            <span className={`absolute -left-10 top-6 ${stickers[0].tilt} rounded-full bg-panel border border-line px-4 py-2 text-[15px] font-semibold text-ink shadow-sm`}>
+              {stickers[0].label}
+            </span>
+            <span className={`absolute -right-6 top-1/4 ${stickers[1].tilt} rounded-full bg-panel border border-line px-4 py-2 text-[15px] font-semibold text-ink shadow-sm`}>
+              {stickers[1].label}
+            </span>
+            <span className={`absolute -left-6 bottom-1/4 ${stickers[2].tilt} rounded-full bg-panel border border-line px-4 py-2 text-[15px] font-semibold text-ink shadow-sm`}>
+              {stickers[2].label}
+            </span>
+            <span className={`absolute right-2 -bottom-12 ${stickers[3].tilt} rounded-full bg-panel border border-line px-4 py-2 text-[15px] font-semibold text-ink shadow-sm`}>
+              {stickers[3].label}
+            </span>
           </div>
-        </aside>
+
+          {/* Stickers — wrap row on small screens */}
+          <div className="lg:hidden mt-8 flex flex-wrap justify-center gap-3">
+            {stickers.map((s) => (
+              <span
+                key={s.label}
+                className={`${s.tilt} rounded-full bg-panel border border-line px-4 py-2 text-[15px] font-semibold text-ink`}
+              >
+                {s.label}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

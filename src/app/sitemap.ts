@@ -8,6 +8,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   projects.forEach((project) => {
+    // Only on-site case studies belong in the sitemap; skip external or
+    // missing CTAs.
+    if (!project.ctaHref?.startsWith("/")) return;
     routes.push({
       url: `${base}${project.ctaHref}`,
       lastModified: new Date(),

@@ -1,25 +1,41 @@
 import Link from "next/link";
 import { projects, type Project } from "@/content/projects";
-import { visuals } from "./visuals";
+import { ProjectVisual } from "./visuals";
+
+/* The showcase is founder/leadership work — the things Mighty started and
+   ran. Employed work (TripBuddy, AirEstate, ScribeAR) lives in the
+   experience tabs above. */
+const isStartedRow = (p: Project) =>
+  p.status === "founder" || p.status === "leadership";
+
+const rowOrder = ["gobabygo", "thaisa", "illinihappenings"];
+const orderOf = (slug: string) => {
+  const i = rowOrder.indexOf(slug);
+  return i === -1 ? rowOrder.length : i;
+};
 
 export function ProjectGrid() {
+  const rows = projects
+    .filter(isStartedRow)
+    .sort((a, b) => orderOf(a.slug) - orderOf(b.slug));
+
   return (
-    <section className="px-8 lg:px-12 pt-13gi pb-20">
-      <div className="mx-auto max-w-7xl">
-        <header className="mb-24 lg:mb-32">
-          <h2 className="font-[400]display-serif text-[56px] lg:text-[72px] leading-[1] -tracking-[0.02em] text-ink text-balance">
-            Selected Works
+    <section id="work" className="bg-ground px-6 lg:px-12 py-24 lg:py-32">
+      <div className="mx-auto max-w-6xl">
+        <header className="max-w-[65ch]">
+          <h2 className="display font-semibold text-ink text-[clamp(2.5rem,5vw,4rem)] leading-[1.05]">
+            I start things.
           </h2>
+          <p className="mt-4 text-[18px] leading-[1.6] text-ink-soft">
+            Not everything I&rsquo;ve built came from a job description. These
+            started as &ldquo;someone should do this&rdquo; — so I did.
+          </p>
         </header>
 
-        <ol className="space-y-32 lg:space-y-40">
-          {projects.map((project, i) => (
-            <li
-              key={project.slug}
-              className="fade-up"
-              style={{ animationDelay: `${Math.min(i, 5) * 80}ms` }}
-            >
-              <ProjectRow project={project} />
+        <ol className="mt-16 lg:mt-24 space-y-24 lg:space-y-32">
+          {rows.map((project, i) => (
+            <li key={project.slug}>
+              <ProjectRow project={project} flip={i % 2 === 1} />
             </li>
           ))}
         </ol>
@@ -28,70 +44,79 @@ export function ProjectGrid() {
   );
 }
 
-function ProjectRow({ project }: { project: Project }) {
-  const Visual = visuals[project.visualKey];
+function ProjectRow({ project, flip }: { project: Project; flip: boolean }) {
   const description =
     project.framing === "narrative"
       ? project.narrative
       : project.question?.replace(/\*\*/g, "");
-
   const { year, roleLabel } = parseRole(project.role);
-  const isShipped = project.status === "shipped";
+  const interactive = Boolean(project.ctaHref);
 
+  const inner = (
+    <div className="grid lg:grid-cols-[6fr_5fr] gap-10 lg:gap-16 items-center">
+      {/* Visual */}
+      <div
+        className={`relative aspect-[4/3] rounded-3xl overflow-hidden bg-panel border border-ink/10 ${
+          interactive
+            ? `transition-transform duration-500 ease-out group-hover:-translate-y-2 ${
+                flip ? "group-hover:rotate-1" : "group-hover:-rotate-1"
+              }`
+            : ""
+        } ${flip ? "lg:order-2" : ""}`}
+      >
+        <div className="absolute inset-0 flex items-center justify-center">
+          <ProjectVisual visualKey={project.visualKey} />
+        </div>
+        <span className="absolute top-5 left-5 z-10 inline-flex items-center rounded-full bg-ink text-ground text-[13px] font-semibold px-3.5 py-1.5">
+          {project.statusLabel}
+        </span>
+      </div>
+
+      {/* Text */}
+      <div className={flip ? "lg:order-1" : ""}>
+        <p className="text-[15px] font-medium text-ink-soft">
+          {year === "—" ? roleLabel : `${year} · ${roleLabel}`}
+        </p>
+        <h3 className="display font-semibold text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.1] mt-2">
+          {project.name}
+          {project.nameItalic && (
+            <span className="text-ink-soft font-medium">
+              {" "}
+              {project.nameItalic}
+            </span>
+          )}
+        </h3>
+
+        {description && (
+          <p className="mt-4 max-w-[52ch] text-[17px] leading-[1.65] text-ink-soft">
+            {description}
+          </p>
+        )}
+
+        {interactive && (
+          <span className="mt-7 inline-flex items-center gap-1.5 text-[16px] font-semibold text-ink underline underline-offset-4 decoration-2">
+            {project.ctaLabel}
+            <span
+              aria-hidden
+              className="transition-transform duration-300 ease-out group-hover:translate-x-1"
+            >
+              →
+            </span>
+          </span>
+        )}
+      </div>
+    </div>
+  );
+
+  if (!interactive) {
+    return <div className="block text-ink">{inner}</div>;
+  }
   return (
     <Link
-      href={project.ctaHref}
+      href={project.ctaHref!}
       className="group block no-underline text-ink"
     >
-      <div className="grid lg:grid-cols-[5fr_6fr] lg:gap-x-20 items-center">
-        {/* Image card */}
-        <div className="relative aspect-[4/3] rounded-3xl bg-paper-soft border border-line overflow-hidden transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1.5 group-hover:shadow-[0_24px_60px_-24px_rgba(10,10,10,0.18)]">
-          <span className="absolute top-5 left-5 z-10 inline-flex items-center rounded-full bg-ink text-paper font-mono text-[10px] uppercase tracking-[0.18em] px-3 py-1.5">
-            {project.statusLabel}
-            {isShipped && <span className="ml-1">↗</span>}
-          </span>
-          <div className="absolute inset-0 flex items-center justify-center p-8 lg:p-12">
-            {Visual && <Visual />}
-          </div>
-        </div>
-
-        {/* Text */}
-        <div className="flex flex-col justify-center pt-10 lg:pt-0">
-          <h3 className="font-sans text-[36px] lg:text-[44px] font-[540] leading-[1.15] -tracking-[0.01em] text-ink text-balance transition-opacity duration-300 group-hover:opacity-90">
-            {project.name}
-            {project.nameItalic && (
-              <span className="ital text-ink-soft"> {project.nameItalic}</span>
-            )}
-          </h3>
-
-          {description && (
-            <p className="mt-5 max-w-[56ch] text-[18px] leading-[1.6] text-ink-soft">
-              {description}
-            </p>
-          )}
-
-          <div className="mt-10">
-            <div className="font-mono text-xs uppercase tracking-[0.18em] text-ink mb-4">
-              Project info
-            </div>
-            <dl>
-              <div className="flex justify-between items-baseline py-4 border-t border-line">
-                <dt className="text-[15px] text-ink-soft">Year</dt>
-                <dd className="text-[15px] text-ink">{year}</dd>
-              </div>
-              <div className="flex justify-between items-baseline py-4 border-t border-b border-line">
-                <dt className="text-[15px] text-ink-soft">Role</dt>
-                <dd className="text-[15px] text-ink">{roleLabel}</dd>
-              </div>
-            </dl>
-          </div>
-
-          <span className="mt-10 inline-flex items-center gap-2 w-fit text-rust font-mono text-xs uppercase tracking-[0.18em] underline underline-offset-[6px] decoration-[1.5px]">
-            {project.ctaLabel}
-            <span aria-hidden>↗</span>
-          </span>
-        </div>
-      </div>
+      {inner}
     </Link>
   );
 }

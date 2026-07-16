@@ -14,34 +14,14 @@ export interface Project {
   metricsLabel: string; // "Outcomes" | "By the numbers" | "What I built"
   metrics: string[]; // markdown-style ** for bold
   tags: string[];
-  ctaLabel: string;
-  ctaHref: string;
+  /* Omit both to render the row without a link (e.g. case study not written yet). */
+  ctaLabel?: string;
+  ctaHref?: string;
   isDark?: boolean; // render the card in dark mode
   visualKey: string; // matches a key in the visuals registry
 }
 
 export const projects: Project[] = [
-  {
-    slug: "bangkokbank",
-    name: "TripBuddy",
-    nameItalic: "at Bangkok Bank",
-    status: "shipped",
-    statusLabel: "Shipped",
-    role: "Student Internship Program · 2025",
-    framing: "narrative",
-    narrative:
-      "A real-time safety companion for tourists in Thailand. Built in 8 weeks with a team of 6. Won \"Most Popular\" at the BBL internship hackathon and pitched to Bangkok Bank leadership.",
-    metricsLabel: "What I shipped",
-    metrics: [
-      "**Won \"Most Popular\"** at the BBL Student Internship Program hackathon.",
-      "Led **8 user interviews** with international tourists in Bangkok; reframed the brief from \"safety app\" to \"single trusted hub.\"",
-      "Designed the **Home, SOS, Area Safety, and News/Area Detail** screens in Figma; co-presented to Bangkok Bank leadership.",
-    ],
-    tags: ["Product", "Research", "UX Design", "Cross-functional"],
-    ctaLabel: "Read the case study",
-    ctaHref: "/work/bangkokbank",
-    visualKey: "bangkokbank",
-  },
   {
     slug: "airestate",
     name: "AirEstate",
@@ -112,7 +92,7 @@ export const projects: Project[] = [
     nameItalic: "Thailand",
     status: "founder",
     statusLabel: "Founder",
-    role: "2021 – 2024",
+    role: "Founder · 2021 – 2024",
     framing: "narrative",
     narrative:
       "Started as a single chapter in Bangkok modifying a ride-on car for one kid who needed mobility. Grew into a national volunteer-run program that builds and donates these cars to families across Thailand.",
@@ -131,21 +111,20 @@ export const projects: Project[] = [
     slug: "illinihappenings",
     name: "Illini Happenings",
     nameItalic: "campus events",
-    status: "shipped",
-    statusLabel: "Shipped",
+    status: "founder",
+    statusLabel: "Founder",
     role: "Founder · 2025",
     framing: "narrative",
     narrative:
-      "TODO: write up Illini Happenings — what it is, who it's for, what you shipped.",
+      "A project to make campus events findable at UIUC — one place to see what's happening instead of six group chats and a flyer wall. Case study in progress; ask me about it.",
     metricsLabel: "What I built",
     metrics: [
       "TODO: outcome 1",
       "TODO: outcome 2",
       "TODO: outcome 3",
     ],
-    tags: ["TODO", "TODO"],
-    ctaLabel: "View case study",
-    ctaHref: "/work/illinihappenings",
+    tags: ["Founding", "Campus", "Product"],
+    /* Case-study page is still TODO — no CTA until it's written. */
     visualKey: "illinihappenings",
   },
 ];

@@ -1,21 +1,22 @@
-import { DM_Sans, Fraunces, JetBrains_Mono, Braah_One } from "next/font/google";
+import { Bricolage_Grotesque, Fraunces, JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
 
-export const generalSans = localFont({
-  variable: "--font-general-sans",
+export const satoshi = localFont({
+  variable: "--font-satoshi",
   display: "swap",
   src: [
-    { path: "../../public/fonts/general-sans/GeneralSans-Variable.woff2", weight: "200 700", style: "normal" },
-    { path: "../../public/fonts/general-sans/GeneralSans-VariableItalic.woff2", weight: "200 700", style: "italic" },
+    { path: "../../public/fonts/satoshi/Satoshi-Variable.woff2", weight: "300 900", style: "normal" },
+    { path: "../../public/fonts/satoshi/Satoshi-VariableItalic.woff2", weight: "300 900", style: "italic" },
   ],
 });
 
-export const dmSans = DM_Sans({
+export const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-bricolage",
   display: "swap",
 });
 
+// Still used by the case-study pages and project visuals; retired from the home page.
 export const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-fraunces",
@@ -27,11 +28,4 @@ export const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
   display: "swap",
-});
-
-export const braahOne = Braah_One({
-  subsets: ["latin"],
-  variable: "--font-braah",
-  display: "swap",
-  weight: ["400"],
 });

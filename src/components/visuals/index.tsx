@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 
 export function ScribearVisual() {
+  // Deterministic initial heights — random values here would mismatch on hydration.
   const [bars, setBars] = useState<number[]>(
-    Array.from({ length: 15 }, () => Math.random() * 75 + 20)
+    Array.from({ length: 15 }, (_, i) => 20 + ((i * 37) % 71))
   );
 
   useEffect(() => {
@@ -186,3 +187,10 @@ export const visuals: Record<string, React.ComponentType> = {
   bangkokbank: BangkokBankVisual,
   illinihappenings: IlliniHappeningsVisual,
 };
+
+/* Client-side lookup wrapper — server components can't index into the
+   `visuals` record across the client boundary. */
+export function ProjectVisual({ visualKey }: { visualKey: string }) {
+  const Visual = visuals[visualKey];
+  return Visual ? <Visual /> : null;
+}
