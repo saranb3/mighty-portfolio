@@ -23,49 +23,6 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "airestate",
-    name: "AirEstate",
-    nameItalic: "listing platform",
-    status: "shipped",
-    statusLabel: "Shipped",
-    role: "Backend Engineer · 2023",
-    framing: "question",
-    question:
-      "How might we make **property search** feel fast and trustworthy when the underlying listing data is messy, partial, and constantly updating?",
-    metricsLabel: "What I built",
-    metrics: [
-      "Backend services for the rental listing search experience: ingestion, normalization, and ranked retrieval.",
-      "Data pipeline that reconciles multiple feed sources into a unified listing schema.",
-      "First production codebase I shipped to a live user base — a real lesson in caching, indexing, and writing boring code that doesn't break.",
-    ],
-    tags: ["Backend", "Data pipelines", "Search", "Real estate"],
-    ctaLabel: "View the writeup",
-    ctaHref: "/work/airestate",
-    visualKey: "airestate",
-  },
-  {
-    slug: "scribear",
-    name: "ScribeAR",
-    nameItalic: "at UIUC",
-    status: "research",
-    statusLabel: "Research",
-    role: "Research Assistant",
-    framing: "question",
-    question:
-      "How might we turn **spoken mathematics** into **rendered LaTeX** in real time, accurately, with sub-200ms latency?",
-    metricsLabel: "Outcomes",
-    metrics: [
-      "**+22% accuracy lift** over baseline by rebuilding the tokenizer around contextual ambiguity.",
-      "**~140ms P95 latency** end-to-end, audio in to LaTeX rendered.",
-      "Shipped to live use at the **UIUC ScribeAR research lab**, 2024.",
-    ],
-    tags: ["Speech ML", "NLP", "Real-time systems", "Accessibility"],
-    ctaLabel: "View case study",
-    ctaHref: "/work/scribear",
-    isDark: true,
-    visualKey: "scribear",
-  },
-  {
     slug: "thaisa",
     name: "Thai Student",
     nameItalic: "Association",

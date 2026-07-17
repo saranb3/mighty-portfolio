@@ -61,8 +61,6 @@ export const experiences: Experience[] = [
       "Built 10+ RESTful APIs to cut page latency by 500ms, boosting checkout completion across 1,000+ listings.",
       "Authored Swagger API documentation for Postman endpoints, reducing onboarding time for 5 new engineers.",
     ],
-    href: "/work/airestate",
-    ctaLabel: "Read the AirEstate writeup",
   },
   {
     id: "scribear",
@@ -76,7 +74,5 @@ export const experiences: Experience[] = [
       "Shipped LaTeX-enabled captioning for an AI accessibility web app, growing DAU 30% within launch week.",
       "Designed funnel analysis and interviews to prioritize 8 accessibility features, cutting drop-off for deaf students.",
     ],
-    href: "/work/scribear",
-    ctaLabel: "Read the ScribeAR case study",
   },
 ];
