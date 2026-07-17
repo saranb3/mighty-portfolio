@@ -20,7 +20,7 @@ export function ExperienceTabs() {
   };
 
   return (
-    <section id="experience" className="bg-ground px-6 lg:px-12 py-24 lg:py-32">
+    <section id="experience" className="bg-ground px-6 lg:px-12 pt-12 lg:pt-16 pb-12 lg:pb-16">
       <div className="mx-auto max-w-6xl">
         <h2 className="display font-semibold text-ink text-[clamp(2.5rem,5vw,4rem)] leading-[1.05]">
           Work experience
@@ -144,28 +144,56 @@ export function ExperienceTabs() {
               companyId={active.id}
               cta={
                 active.href ? (
-                  <Link
-                    href={active.href}
-                    target={
-                      active.href.startsWith("http") ? "_blank" : undefined
-                    }
-                    rel={
-                      active.href.startsWith("http")
-                        ? "noopener noreferrer"
-                        : undefined
-                    }
-                    className="group inline-flex items-center gap-1.5 text-[16px] font-semibold text-ink no-underline"
-                  >
-                    <span className="underline underline-offset-4 decoration-2">
-                      {active.ctaLabel ?? "Learn more"}
-                    </span>
-                    <span
-                      aria-hidden
-                      className="transition-transform duration-300 ease-out group-hover:translate-x-1"
+                  <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+                    <Link
+                      href={active.href}
+                      target={
+                        active.href.startsWith("http") ? "_blank" : undefined
+                      }
+                      rel={
+                        active.href.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                      className="group inline-flex items-center gap-1.5 text-[16px] font-semibold text-ink no-underline"
                     >
-                      →
-                    </span>
-                  </Link>
+                      <span className="underline underline-offset-4 decoration-2">
+                        {active.ctaLabel ?? "Learn more"}
+                      </span>
+                      <span
+                        aria-hidden
+                        className="transition-transform duration-300 ease-out group-hover:translate-x-1"
+                      >
+                        →
+                      </span>
+                    </Link>
+                    {active.secondaryHref ? (
+                      <Link
+                        href={active.secondaryHref}
+                        target={
+                          active.secondaryHref.startsWith("http")
+                            ? "_blank"
+                            : undefined
+                        }
+                        rel={
+                          active.secondaryHref.startsWith("http")
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
+                        className="group inline-flex items-center gap-1.5 text-[16px] font-semibold text-ink no-underline"
+                      >
+                        <span className="underline underline-offset-4 decoration-2">
+                          {active.secondaryCtaLabel ?? "Learn more"}
+                        </span>
+                        <span
+                          aria-hidden
+                          className="transition-transform duration-300 ease-out group-hover:translate-x-1"
+                        >
+                          →
+                        </span>
+                      </Link>
+                    ) : null}
+                  </div>
                 ) : null
               }
             />

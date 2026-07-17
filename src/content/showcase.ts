@@ -16,6 +16,9 @@ export interface ShowcaseProduct {
   name: string;
   blurb: string;
   visual: ProductVisualKey;
+  /* Optional real screenshot; when set, the deck shows this image instead
+     of the stylized `visual` tile. Path is relative to /public. */
+  image?: string;
 }
 
 export const productsByCompany: Record<string, ShowcaseProduct[]> = {
@@ -45,17 +48,21 @@ export const productsByCompany: Record<string, ShowcaseProduct[]> = {
       blurb:
         "One trusted hub for a tourist's trip — map, safety score, local guidance.",
       visual: "tb-home",
+      image: "/images/tripbuddy figma/Home Page.png",
     },
     {
-      name: "SOS flow",
+      name: "Travel insurance",
       blurb:
-        "One tap to reach police, embassy, and emergency contacts with live location.",
+        "Bundled coverage a traveler can compare, buy, and manage without leaving the app.",
       visual: "tb-sos",
+      image: "/images/tripbuddy figma/Travel Insurance.png",
     },
     {
-      name: "Trip alerts",
-      blurb: "Area news and scam warnings, localized to where you stand.",
+      name: "More & essentials",
+      blurb:
+        "Profile, saved places, and quick access to every TripBuddy tool in one menu.",
       visual: "tb-news",
+      image: "/images/tripbuddy figma/More.png",
     },
   ],
 };

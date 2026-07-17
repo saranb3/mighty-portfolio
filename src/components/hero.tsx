@@ -15,7 +15,7 @@ const stickers = [
    fact stickers, the greeting in the headline. Warmth with receipts. */
 export function Hero() {
   return (
-    <section className="relative bg-ground overflow-hidden px-6 lg:px-12 pt-36 lg:pt-44 pb-20 lg:pb-24">
+    <section className="relative bg-ground overflow-hidden px-6 lg:px-12 pt-36 lg:pt-44 pb-12 lg:pb-16">
       <div className="mx-auto max-w-6xl grid lg:grid-cols-[7fr_5fr] gap-14 lg:gap-20 items-center">
         <div>
           <h1

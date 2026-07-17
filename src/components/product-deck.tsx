@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import {
   productsByCompany,
@@ -205,10 +206,28 @@ function ProductTile({ visual }: { visual: ProductVisualKey }) {
   );
 }
 
+function ProductImageTile({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="relative w-full aspect-[3/4] rounded-xl border border-line bg-paper-soft overflow-hidden">
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="230px"
+        className="object-cover object-top"
+      />
+    </div>
+  );
+}
+
 function PolaroidCard({ product }: { product: ShowcaseProduct }) {
   return (
     <div className="bg-white p-2.5 pb-3.5 shadow-[0_18px_40px_-18px_rgba(22,21,19,0.35)]">
-      <ProductTile visual={product.visual} />
+      {product.image ? (
+        <ProductImageTile src={product.image} alt={product.name} />
+      ) : (
+        <ProductTile visual={product.visual} />
+      )}
       <h4 className="display mt-3 text-[17px] font-semibold text-ink leading-snug">
         {product.name}
       </h4>
@@ -269,7 +288,7 @@ export function ProductDeck({
       {/* Desktop deck — absolute cards fanning across the panel */}
       <div
         ref={deckRef}
-        className="hidden sm:block relative mt-8 h-[360px] max-w-[820px] cursor-pointer"
+        className="hidden sm:block relative mt-8 h-[460px] max-w-[820px] cursor-pointer"
         onClick={() => setOpen((o) => !o)}
         aria-hidden
       >

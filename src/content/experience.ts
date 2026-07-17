@@ -12,6 +12,8 @@ export interface Experience {
   bullets: string[];
   href?: string;
   ctaLabel?: string;
+  secondaryHref?: string;
+  secondaryCtaLabel?: string;
 }
 
 export const experiences: Experience[] = [
@@ -46,6 +48,9 @@ export const experiences: Experience[] = [
     ],
     href: "https://docs.google.com/document/d/1BvWyMjsS5Z7rD_HrGpT7yLKMlln87hdyoIAovh_E9dg/edit?usp=sharing",
     ctaLabel: "Read the TripBuddy case study",
+    secondaryHref:
+      "https://www.figma.com/design/lHp467CKCFuSOQtIqxjbRU/Trip-Buddy-Figma-Wireframe?node-id=132-126&t=sABsZED7wuKftZC9-1",
+    secondaryCtaLabel: "View the Figma wireframe",
   },
   {
     id: "airestate",

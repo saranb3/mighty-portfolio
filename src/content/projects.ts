@@ -19,6 +19,8 @@ export interface Project {
   ctaHref?: string;
   isDark?: boolean; // render the card in dark mode
   visualKey: string; // matches a key in the visuals registry
+  image?: string; // optional real photo/screenshot; overrides the stylized visual in the grid
+  stats?: { value: string; label: string }[]; // clean number+label pairs shown on the grid card
 }
 
 export const projects: Project[] = [
@@ -42,6 +44,11 @@ export const projects: Project[] = [
     ctaLabel: "See the year in review",
     ctaHref: "/work/thaisa",
     visualKey: "thaisa",
+    stats: [
+      { value: "12", label: "events shipped" },
+      { value: "$409", label: "raised, Thai Tea Sale" },
+      { value: "100+", label: "active members" },
+    ],
   },
   {
     slug: "gobabygo",
@@ -63,6 +70,11 @@ export const projects: Project[] = [
     ctaLabel: "Read the story",
     ctaHref: "/work/gobabygo",
     visualKey: "gobabygo",
+    stats: [
+      { value: "7", label: "chapters nationwide" },
+      { value: "200+", label: "volunteers trained" },
+      { value: "30+", label: "cars built & donated" },
+    ],
   },
   {
     slug: "illinihappenings",
