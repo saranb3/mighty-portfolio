@@ -12,8 +12,6 @@ export interface Experience {
   bullets: string[];
   href?: string;
   ctaLabel?: string;
-  secondaryHref?: string;
-  secondaryCtaLabel?: string;
 }
 
 export const experiences: Experience[] = [
@@ -46,11 +44,8 @@ export const experiences: Experience[] = [
       "Interviewed 30 travelers and officials, building personas that shaped segmentation and 4 core product flows.",
       "Wireframed app screens in Figma and analyzed Mixpanel funnels to prioritize features, lifting conversion 40%.",
     ],
-    href: "https://docs.google.com/document/d/1BvWyMjsS5Z7rD_HrGpT7yLKMlln87hdyoIAovh_E9dg/edit?usp=sharing",
-    ctaLabel: "Read the TripBuddy case study",
-    secondaryHref:
-      "https://www.figma.com/design/lHp467CKCFuSOQtIqxjbRU/Trip-Buddy-Figma-Wireframe?node-id=132-126&t=sABsZED7wuKftZC9-1",
-    secondaryCtaLabel: "View the Figma wireframe",
+    href: "/work/bangkokbank",
+    ctaLabel: "uBuddy case study",
   },
   {
     id: "airestate",
@@ -66,6 +61,8 @@ export const experiences: Experience[] = [
       "Built 10+ RESTful APIs to cut page latency by 500ms, boosting checkout completion across 1,000+ listings.",
       "Authored Swagger API documentation for Postman endpoints, reducing onboarding time for 5 new engineers.",
     ],
+    href: "/work/airestate",
+    ctaLabel: "Read the AirEstate writeup",
   },
   {
     id: "scribear",
@@ -79,5 +76,7 @@ export const experiences: Experience[] = [
       "Shipped LaTeX-enabled captioning for an AI accessibility web app, growing DAU 30% within launch week.",
       "Designed funnel analysis and interviews to prioritize 8 accessibility features, cutting drop-off for deaf students.",
     ],
+    href: "/work/scribear",
+    ctaLabel: "Read the ScribeAR case study",
   },
 ];

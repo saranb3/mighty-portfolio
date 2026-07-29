@@ -29,16 +29,16 @@ export function Hero() {
             className="display mt-5 text-[clamp(1.4rem,2.4vw,1.75rem)] leading-[1.3] font-semibold text-ink max-w-[26ch] fade-up"
             style={{ animationDelay: "0.15s" }}
           >
-            Aspiring product manager who loves to build.
+            Aspiring product manager who loves to build and tackle  problems!
           </p>
 
           <p
             className="mt-6 max-w-[52ch] text-[18px] leading-[1.65] font-medium text-ink-soft fade-up"
             style={{ animationDelay: "0.25s" }}
           >
-            Rising senior in CS &amp; Stats at UIUC — currently a PM intern at
-            Zebra Technologies, previously Bangkok Bank and AirEstate. Outside
-            of work, you can find me playing football, lifting weights, trying out coffee at new cafes, or taking photos with my Fujifilm!
+            Rising senior in CS &amp; Stats at UIUC, currently a PM intern at
+            Zebra Technologies, previously at Bangkok Bank and AirEstate. Outside
+            of work, you can find me playing football, lifting weights, drinking coffee, or taking photos with my Fujifilm X-T50!
           </p>
 
           <div
@@ -74,7 +74,7 @@ export function Hero() {
               className="w-full aspect-[4/5] object-cover"
             />
             <figcaption className="ital absolute bottom-4 left-0 right-0 text-center text-[18px] text-ink-soft">
-              off duty, Santa Monica
+            Santa Monica 10/10/2024
             </figcaption>
           </figure>
 

@@ -20,6 +20,7 @@ export interface Project {
   isDark?: boolean; // render the card in dark mode
   visualKey: string; // matches a key in the visuals registry
   image?: string; // optional real photo/screenshot; overrides the stylized visual in the grid
+  images?: string[]; // optional gallery; when 2+, the card shows a slideshow with next/prev
   stats?: { value: string; label: string }[]; // clean number+label pairs shown on the grid card
 }
 
@@ -44,9 +45,16 @@ export const projects: Project[] = [
     ctaLabel: "See the year in review",
     ctaHref: "/work/thaisa",
     visualKey: "thaisa",
+    images: [
+      "/images/thaisa/songkran.png",
+      "/images/thaisa/welcomeparty.png",
+      "/images/thaisa/thanksgiving.png",
+      "/images/thaisa/orchid trip.png",
+      "/images/thaisa/seniorparty.png",
+    ],
     stats: [
-      { value: "12", label: "events shipped" },
-      { value: "$409", label: "raised, Thai Tea Sale" },
+      { value: "12", label: "events organized" },
+      { value: "$1000", label: "raised" },
       { value: "100+", label: "active members" },
     ],
   },
@@ -59,7 +67,7 @@ export const projects: Project[] = [
     role: "Founder · 2021 – 2024",
     framing: "narrative",
     narrative:
-      "Started as a single chapter in Bangkok modifying a ride-on car for one kid who needed mobility. Grew into a national volunteer-run program that builds and donates these cars to families across Thailand.",
+      "Founded in my school's maker space, GoBabyGo is a nonprofit based in Bangkok modifying ride-on toy cars for children with mobility disabilities. Currently, scaled into a national volunteer-run program that builds these cars to families across Thailand.",
     metricsLabel: "What we built",
     metrics: [
       "**7 chapters** across Thai universities, each running independent build days.",
@@ -67,9 +75,15 @@ export const projects: Project[] = [
       "**30+ cars** built and given to families with kids who have mobility challenges.",
     ],
     tags: ["Nonprofit", "Founding", "Hardware", "Bangkok → National"],
-    ctaLabel: "Read the story",
-    ctaHref: "/work/gobabygo",
+    ctaLabel: "Read more",
+    ctaHref: "https://www.gobabygothailand.org/",
     visualKey: "gobabygo",
+    images: [
+      "/images/gobabygo/gbg1.png",
+      "/images/gobabygo/gbg2.png",
+      "/images/gobabygo/gbg3.png",
+      "/images/gobabygo/gbg4.png",
+    ],
     stats: [
       { value: "7", label: "chapters nationwide" },
       { value: "200+", label: "volunteers trained" },

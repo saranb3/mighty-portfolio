@@ -1,4 +1,4 @@
-/**
+i/**
  * Inline, in-file ignore directives — eslint-disable-style waivers that live at
  * the point they apply and travel with the artifact instead of (or alongside)
  * an ignore in `.impeccable/config.json`.

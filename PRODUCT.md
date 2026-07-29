@@ -14,7 +14,7 @@ PM recruiters and hiring managers screening for APM / new-grad product roles. Th
 
 ## Product Purpose
 
-Personal portfolio for Saran "Mighty" Burapachaisri — rising senior in CS & Statistics at UIUC, currently PM @ Zebra, previously Bangkok Bank and AirEstate. The site exists to convert recruiter attention into outreach. Success is twofold: they email him, and a week later they can still describe him in one line. Conversion and memorability together — not one or the other.
+Personal portfolio for Saran "Mighty" Burapachaisri — rising senior in CS & Statistics at UIUC, currently PM @ Zebra, previously at Bangkok Bank and AirEstate. The site exists to convert recruiter attention into outreach. Success is twofold: they email him, and a week later they can still describe him in one line. Conversion and memorability together — not one or the other.
 
 ## Positioning
 
