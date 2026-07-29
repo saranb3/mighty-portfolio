@@ -12,6 +12,8 @@ export interface Experience {
   bullets: string[];
   href?: string;
   ctaLabel?: string;
+  secondaryHref?: string;
+  secondaryCtaLabel?: string;
 }
 
 export const experiences: Experience[] = [
