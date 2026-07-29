@@ -90,24 +90,4 @@ export const projects: Project[] = [
       { value: "30+", label: "cars built & donated" },
     ],
   },
-  {
-    slug: "illinihappenings",
-    name: "Illini Happenings",
-    nameItalic: "campus events",
-    status: "founder",
-    statusLabel: "Founder",
-    role: "Founder · 2025",
-    framing: "narrative",
-    narrative:
-      "A project to make campus events findable at UIUC — one place to see what's happening instead of six group chats and a flyer wall. Case study in progress; ask me about it.",
-    metricsLabel: "What I built",
-    metrics: [
-      "TODO: outcome 1",
-      "TODO: outcome 2",
-      "TODO: outcome 3",
-    ],
-    tags: ["Founding", "Campus", "Product"],
-    /* Case-study page is still TODO — no CTA until it's written. */
-    visualKey: "illinihappenings",
-  },
 ];

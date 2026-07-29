@@ -1,55 +1,51 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
-const navLinks: { href: string; label: string; external?: boolean }[] = [
-  { href: "/", label: "Work" },
-  {
-    href: "https://drive.google.com/file/d/1RaWqsNq4lDRwzBSNSBBXOtucqTldhRCW/view?usp=sharing",
-    label: "Resume",
-    external: true,
-  },
+const navLinks: { href: string; label: string }[] = [
+  { href: "/#about", label: "About Me" },
+  { href: "/#experience", label: "Work Experience" },
+  { href: "/#work", label: "Projects" },
 ];
 
-function isActive(href: string, pathname: string): boolean {
-  if (href === "/") return pathname === "/";
-  return pathname === href || pathname.startsWith(href + "/");
-}
+const RESUME_URL =
+  "https://drive.google.com/file/d/1FHCjLk-L367kzPA0KwZU3x6ogWSD7FBb/view?usp=sharing";
+
+const linkBase =
+  "px-4 py-2 rounded-full text-ink no-underline transition-colors duration-200 hover:bg-ink/8";
 
 export function Nav() {
-  const pathname = usePathname();
-
   return (
-    <>
-      <Link
-        href="/"
-        aria-label="Home"
-        className="display absolute top-6 left-6 lg:left-14 z-50 w-10 h-10 bg-ink rounded-full flex items-center justify-center text-ground font-semibold text-lg no-underline"
-      >
-        M
-      </Link>
+    <header className="fixed top-0 inset-x-0 z-50 h-16 bg-paper-soft border-b border-line">
+      <div className="h-full grid grid-cols-3 items-center px-6 lg:px-14">
+        {/* Left — wordmark */}
+        <Link
+          href="/"
+          aria-label="Home"
+          className="display justify-self-start text-ink font-bold text-xl tracking-tight no-underline"
+        >
+          Mighty
+        </Link>
 
-      <nav className="absolute top-6 right-6 lg:right-14 z-50 flex items-center gap-x-1 text-[17px] font-semibold">
-        {navLinks.map((link) => {
-          const active = isActive(link.href, pathname);
-          return (
-            <Link
-              key={link.href}
-              href={link.href}
-              target={link.external ? "_blank" : undefined}
-              rel={link.external ? "noopener noreferrer" : undefined}
-              className={
-                active
-                  ? "px-4 py-2 rounded-full bg-paper-deep text-ink no-underline"
-                  : "px-4 py-2 rounded-full text-ink no-underline transition-colors duration-200 hover:bg-ink/8"
-              }
-            >
+        {/* Center — nav */}
+        <nav className="justify-self-center flex items-center gap-x-1 text-[17px] font-semibold">
+          {navLinks.map((link) => (
+            <Link key={link.href} href={link.href} className={linkBase}>
               {link.label}
             </Link>
-          );
-        })}
-      </nav>
-    </>
+          ))}
+        </nav>
+
+        {/* Right — resume */}
+        <a
+          href={RESUME_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`justify-self-end text-[17px] font-semibold ${linkBase}`}
+        >
+          Resume
+        </a>
+      </div>
+    </header>
   );
 }

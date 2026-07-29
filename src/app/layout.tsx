@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ViewTransitions } from "next-view-transitions";
 import { bricolage, fraunces, jetbrainsMono, satoshi } from "@/lib/fonts";
 import { Nav } from "@/components/nav";
 import "./globals.css";
@@ -37,14 +38,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${bricolage.variable} ${fraunces.variable} ${jetbrainsMono.variable} ${satoshi.variable}`}
-    >
-      <body>
-        <Nav />
-        {children}
-      </body>
-    </html>
+    <ViewTransitions>
+      <html
+        lang="en"
+        className={`${bricolage.variable} ${fraunces.variable} ${jetbrainsMono.variable} ${satoshi.variable}`}
+      >
+        <body>
+          <Nav />
+          {children}
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

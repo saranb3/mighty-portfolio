@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const EMAIL = "saranb3@illinois.edu";
 const RESUME_URL =
-  "https://drive.google.com/file/d/1RaWqsNq4lDRwzBSNSBBXOtucqTldhRCW/view?usp=sharing";
+  "https://drive.google.com/file/d/1FHCjLk-L367kzPA0KwZU3x6ogWSD7FBb/view?usp=sharing";
 
 const stickers = [
   { label: "🐶 I have eight dogs", tilt: "-rotate-6" },
@@ -11,11 +14,50 @@ const stickers = [
   { label: "✈️ 7 countries so far", tilt: "rotate-6" },
 ];
 
-/* "Snapshot" hero — photo-led and personality-forward: a tilted polaroid,
-   fact stickers, the greeting in the headline. Warmth with receipts. */
+const postcards = [
+  {
+    src: "/images/mighty-1.png",
+    alt: "Mighty at the beach in Santa Monica",
+    caption: "Beach Day @ Santa Monica",
+  },
+  {
+    src: "/images/soccer.png",
+    alt: "Mighty playing football",
+    caption: "Match Day @ Chelsea Piers",
+  },
+  {
+    src: "/images/pitch.JPG",
+    alt: "Mighty on the pitch",
+    caption: "Pitching @ Bangkok ",
+  },
+  {
+    src: "/images/photography.jpeg",
+    alt: "A photo Mighty shot on his Fujifilm X-T50",
+    caption: "Photographing @ West Village",
+  },
+];
+
+const SLIDE_MS = 3800;
+
+/* "Snapshot" hero — photo-led and personality-forward: a tilted polaroid that
+   drifts through Mighty's snapshots on its own, fact stickers, the greeting in
+   the headline. Warmth with receipts. */
 export function Hero() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = window.setInterval(
+      () => setIndex((i) => (i + 1) % postcards.length),
+      SLIDE_MS,
+    );
+    return () => window.clearInterval(id);
+  }, [paused]);
+
   return (
-    <section className="relative bg-ground overflow-hidden px-6 lg:px-12 pt-36 lg:pt-44 pb-12 lg:pb-16">
+    <section id="about" className="relative scroll-mt-16 bg-ground overflow-hidden px-6 lg:px-12 pt-36 lg:pt-44 pb-12 lg:pb-16">
       <div className="mx-auto max-w-6xl grid lg:grid-cols-[7fr_5fr] gap-14 lg:gap-20 items-center">
         <div>
           <h1
@@ -26,20 +68,14 @@ export function Hero() {
           </h1>
 
           <p
-            className="display mt-5 text-[clamp(1.4rem,2.4vw,1.75rem)] leading-[1.3] font-semibold text-ink max-w-[26ch] fade-up"
+            className="font-sans mt-5 text-[clamp(1.4rem,2.4vw,1.75rem)] leading-[1.3]h text-ink max-w-[30ch] fade-up"
             style={{ animationDelay: "0.15s" }}
           >
-            Aspiring product manager who loves to build and tackle  problems!
+            Rising senior studying Computer Science &amp; Statistics at UIUC. Currently a PM intern at
+            Zebra Technologies, previously at Bangkok Bank and AirEstate. Outside
+            of work, you can find me playing football, lifting weights, drinking coffee, or taking photos!
           </p>
 
-          <p
-            className="mt-6 max-w-[52ch] text-[18px] leading-[1.65] font-medium text-ink-soft fade-up"
-            style={{ animationDelay: "0.25s" }}
-          >
-            Rising senior in CS &amp; Stats at UIUC, currently a PM intern at
-            Zebra Technologies, previously at Bangkok Bank and AirEstate. Outside
-            of work, you can find me playing football, lifting weights, drinking coffee, or taking photos with my Fujifilm X-T50!
-          </p>
 
           <div
             className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4 fade-up"
@@ -62,19 +98,65 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Polaroid + stickers */}
+        {/* Auto-advancing polaroid slideshow + stickers */}
         <div className="relative fade-up" style={{ animationDelay: "0.3s" }}>
-          <figure className="rotate-2 bg-white p-3 pb-14 w-[min(100%,380px)] mx-auto shadow-[0_28px_60px_-28px_rgba(22,21,19,0.4)]">
-            <Image
-              src="/images/mighty-1.png"
-              alt="Mighty at the beach in Santa Monica"
-              width={760}
-              height={950}
-              priority
-              className="w-full aspect-[4/5] object-cover"
-            />
-            <figcaption className="ital absolute bottom-4 left-0 right-0 text-center text-[18px] text-ink-soft">
-            Santa Monica 10/10/2024
+          <figure
+            className="relative rotate-2 bg-white p-3 pb-14 w-[min(100%,400px)] mx-auto shadow-[0_28px_60px_-28px_rgba(22,21,19,0.4)]"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+            onFocus={() => setPaused(true)}
+            onBlur={() => setPaused(false)}
+          >
+            <div className="relative aspect-[4/5] w-full overflow-hidden">
+              {postcards.map((p, i) => {
+                const active = i === index;
+                return (
+                  <Image
+                    key={p.src}
+                    src={p.src}
+                    alt={p.alt}
+                    fill
+                    sizes="(min-width: 1024px) 400px, 90vw"
+                    priority={i === 0}
+                    className="object-cover"
+                    style={{
+                      opacity: active ? 1 : 0,
+                      transform: active ? "scale(1.06)" : "scale(1)",
+                      transition:
+                        "opacity 1100ms ease, transform 4600ms ease-out",
+                    }}
+                  />
+                );
+              })}
+
+              {/* Slide indicators */}
+              <div className="absolute inset-x-0 bottom-3 z-10 flex justify-center gap-1.5">
+                {postcards.map((p, i) => (
+                  <button
+                    key={p.src}
+                    type="button"
+                    onClick={() => setIndex(i)}
+                    aria-label={`Show ${p.caption}`}
+                    aria-current={i === index}
+                    className={`size-2 rounded-full shadow-[0_1px_2px_rgba(0,0,0,0.4)] transition-all duration-300 ${
+                      i === index ? "w-5 bg-white" : "bg-white/60 hover:bg-white/90"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <figcaption className="absolute inset-x-0 bottom-4 h-6 text-center">
+              {postcards.map((p, i) => (
+                <span
+                  key={p.src}
+                  className={`ital absolute inset-x-0 text-[18px] text-ink-soft transition-opacity duration-700 ${
+                    i === index ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  {p.caption}
+                </span>
+              ))}
             </figcaption>
           </figure>
 

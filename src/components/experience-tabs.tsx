@@ -20,7 +20,7 @@ export function ExperienceTabs() {
   };
 
   return (
-    <section id="experience" className="bg-ground px-6 lg:px-12 pt-12 lg:pt-16 pb-12 lg:pb-16">
+    <section id="experience" className="scroll-mt-20 bg-ground px-6 lg:px-12 pt-12 lg:pt-16 pb-12 lg:pb-16">
       <div className="mx-auto max-w-6xl">
         <h2 className="display font-semibold text-ink text-[clamp(2.5rem,5vw,4rem)] leading-[1.05]">
           Work experience

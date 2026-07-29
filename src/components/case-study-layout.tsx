@@ -1,176 +1,171 @@
-"use client";
+import Image from "next/image";
+import { Link } from "next-view-transitions";
+import type { ReactNode } from "react";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
-
-export type CaseStudySection = { id: string; label: string };
-
+/**
+ * Case-study page shell — matches the home page's system: Bricolage display
+ * headings, Satoshi body, warm-gray ground, rust accent used sparingly.
+ * Single centered column, no scroll-spy sidebar. Reused across every
+ * `/work/*` page. Navigation in and out animates via the View Transitions
+ * API (see next-view-transitions in layout.tsx + globals.css).
+ */
 export function CaseStudyLayout({
-  sections,
-  children,
   org,
   title,
   titleItalic,
   meta,
   next,
+  children,
 }: {
-  sections: CaseStudySection[];
-  children: React.ReactNode;
   org?: { label: string; icon?: string; iconBg?: string };
   title: string;
   titleItalic?: string;
   meta?: { role?: string; context?: string; timeline?: string };
   next?: { href: string; label: string };
+  children: ReactNode;
 }) {
-  const [active, setActive] = useState<string>(sections[0]?.id ?? "");
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort(
-            (a, b) =>
-              a.boundingClientRect.top - b.boundingClientRect.top
-          )[0];
-        if (visible) setActive(visible.target.id);
-      },
-      { rootMargin: "-25% 0px -65% 0px", threshold: 0 }
-    );
-
-    sections.forEach((s) => {
-      const el = document.getElementById(s.id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, [sections]);
+  const fields = [
+    meta?.role && { k: "Role", v: meta.role },
+    meta?.context && { k: "Context", v: meta.context },
+    meta?.timeline && { k: "Timeline", v: meta.timeline },
+  ].filter(Boolean) as { k: string; v: string }[];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-12 lg:gap-24 max-w-[1280px] mx-auto px-8 lg:px-16 pt-32 pb-24">
-      {/* Sticky sidebar */}
-      <aside className="lg:sticky lg:top-32 lg:self-start">
-        <Link
-          href="/"
-          className="font-sans text-base text-ink-soft hover:text-ink no-underline mb-10 block transition-colors"
-        >
-          ← Work
-        </Link>
-        <nav className="flex flex-col gap-3.5">
-          {sections.map((s) => (
-            <a
-              key={s.id}
-              href={`#${s.id}`}
-              className={`font-sans text-base no-underline transition-colors ${
-                active === s.id
-                  ? "text-blue-600 font-medium"
-                  : "text-ink-soft hover:text-ink"
-              }`}
-            >
-              {s.label}
-            </a>
-          ))}
-        </nav>
-      </aside>
+    <article className="mx-auto max-w-[760px] px-6 lg:px-8 pt-28 lg:pt-36 pb-24">
+      <Link
+        href="/#work"
+        className="inline-flex items-center gap-1.5 text-[15px] font-medium text-ink-soft no-underline transition-colors duration-200 hover:text-ink"
+      >
+        <span aria-hidden>←</span> Work
+      </Link>
 
-      {/* Main content */}
-      <main className="min-w-0">
-        {/* Header */}
-        <header className="mb-20">
-          {org && (
-            <div className="flex items-center gap-3 mb-8">
-              {org.icon && (
-                <span
-                  className={`inline-flex items-center justify-center w-8 h-8 rounded-md font-serif italic font-bold text-base ${
-                    org.iconBg ?? "bg-mustard text-ink"
-                  }`}
-                >
-                  {org.icon}
-                </span>
-              )}
-              <span className="font-sans text-xl text-ink">{org.label}</span>
-            </div>
-          )}
-
-          <h1 className="display-serif text-4xl lg:text-[64px] font-medium leading-[1.05] -tracking-[0.02em] text-ink mb-14">
-            {title}
-            {titleItalic && (
-              <span className="italic font-medium text-ink-soft"> {titleItalic}</span>
+      <header className="mt-10 fade-up">
+        {org && (
+          <div className="flex items-center gap-3">
+            {org.icon && (
+              <span
+                className={`inline-flex size-9 shrink-0 items-center justify-center rounded-full text-[16px] font-semibold ${
+                  org.iconBg ?? "bg-ink text-ground"
+                }`}
+                aria-hidden
+              >
+                {org.icon}
+              </span>
             )}
-          </h1>
-
-          {meta && (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-12 gap-y-6 max-w-3xl">
-              {meta.role && (
-                <div>
-                  <div className="font-sans text-sm text-ink-soft mb-2">Role</div>
-                  <div className="font-sans text-lg text-ink font-medium">
-                    {meta.role}
-                  </div>
-                </div>
-              )}
-              {meta.context && (
-                <div>
-                  <div className="font-sans text-sm text-ink-soft mb-2">Context</div>
-                  <div className="font-sans text-lg text-ink font-medium">
-                    {meta.context}
-                  </div>
-                </div>
-              )}
-              {meta.timeline && (
-                <div>
-                  <div className="font-sans text-sm text-ink-soft mb-2">Timeline</div>
-                  <div className="font-sans text-lg text-ink font-medium">
-                    {meta.timeline}
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-        </header>
-
-        {children}
-
-        {next && (
-          <div className="mt-24 pt-8 border-t border-line flex justify-between items-center font-mono text-xs tracking-widest text-ink-soft">
-            <span>NEXT →</span>
-            <Link
-              href={next.href}
-              className="text-ink no-underline hover:underline"
-            >
-              {next.label}
-            </Link>
+            <span className="text-[17px] font-medium text-ink-soft">
+              {org.label}
+            </span>
           </div>
         )}
-      </main>
-    </div>
+
+        <h1 className="display font-semibold text-[clamp(2rem,5vw,3.4rem)] leading-[1.05] text-ink mt-6">
+          {title}
+          {titleItalic && <span className="ital text-ink-soft"> {titleItalic}</span>}
+        </h1>
+
+        {fields.length > 0 && (
+          <dl className="mt-8 flex flex-wrap gap-x-8 sm:gap-x-12 gap-y-5 border-t border-line pt-7">
+            {fields.map((f) => (
+              <div key={f.k}>
+                <dt className="text-[13px] text-ink-soft">{f.k}</dt>
+                <dd className="mt-1 text-[16px] font-medium text-ink">{f.v}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+      </header>
+
+      <div className="mt-14 fade-up" style={{ animationDelay: "0.09s" }}>
+        {children}
+      </div>
+
+      {next && (
+        <nav className="mt-20 lg:mt-28 flex items-center justify-between gap-4 border-t border-line pt-8">
+          <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-ink-mute">
+            Next
+          </span>
+          <Link
+            href={next.href}
+            className="group display inline-flex items-center gap-2 text-[clamp(1.25rem,2.6vw,1.75rem)] font-semibold text-ink no-underline"
+          >
+            {next.label}
+            <span
+              aria-hidden
+              className="transition-transform duration-300 ease-out group-hover:translate-x-1"
+            >
+              →
+            </span>
+          </Link>
+        </nav>
+      )}
+    </article>
   );
 }
 
 /**
- * Section wrapper — used inside CaseStudyLayout children.
- * id must match a sidebar section id.
+ * A titled block inside a case study. `heading` is the section name shown as a
+ * Bricolage sub-heading (e.g. "Overview", "Challenges", "Solutions"). Prose,
+ * lists, and <Figure> images pass through as children.
  */
 export function CaseStudySection({
-  id,
-  label,
-  headline,
+  heading,
   children,
 }: {
-  id: string;
-  label: string;
-  headline: string;
-  children: React.ReactNode;
+  heading: string;
+  children: ReactNode;
 }) {
   return (
-    <section id={id} className="mb-28 scroll-mt-32">
-      <div className="display-serif italic text-2xl text-ink mb-4">{label}</div>
-      <h2 className="display-serif text-3xl lg:text-[40px] font-medium leading-[1.15] -tracking-[0.02em] text-ink mb-8 max-w-[820px]">
-        {headline}
+    <section className="mt-16 lg:mt-20 first:mt-0">
+      <h2 className="display flex items-center gap-3 text-[clamp(1.5rem,3.2vw,2.05rem)] font-semibold leading-[1.12] text-ink">
+        <span
+          aria-hidden
+          className="h-2.5 w-2.5 shrink-0 rounded-full bg-tangerine-deep"
+        />
+        {heading}
       </h2>
-      <div className="font-sans text-[18px] text-ink leading-[1.65] space-y-6 max-w-[760px]">
+      <div className="mt-6 max-w-[66ch] space-y-5 text-[17px] lg:text-[18px] leading-[1.75] text-ink-soft [&_a]:text-ink [&_a]:underline [&_a]:decoration-line [&_a]:underline-offset-4 hover:[&_a]:decoration-ink [&_strong]:font-semibold [&_strong]:text-ink [&_ul]:mt-5 [&_ul]:list-none [&_ul]:space-y-3 [&_ul]:pl-0 [&_li]:relative [&_li]:pl-6 [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:top-[0.7em] [&_li]:before:h-1.5 [&_li]:before:w-1.5 [&_li]:before:rounded-full [&_li]:before:bg-ink-mute">
         {children}
       </div>
     </section>
+  );
+}
+
+/**
+ * Bordered image with an optional serif-italic caption — the same treatment as
+ * the home-page polaroid. Use for the hero and any in-section photos.
+ */
+export function Figure({
+  src,
+  alt,
+  caption,
+  priority = false,
+  aspect = "16 / 10",
+}: {
+  src: string;
+  alt: string;
+  caption?: string;
+  priority?: boolean;
+  aspect?: string;
+}) {
+  return (
+    <figure className="my-8 first:mt-0">
+      <div className="overflow-hidden rounded-2xl border border-line bg-panel">
+        <Image
+          src={src}
+          alt={alt}
+          width={1280}
+          height={800}
+          priority={priority}
+          sizes="(max-width: 800px) 100vw, 760px"
+          className="w-full object-cover"
+          style={{ aspectRatio: aspect }}
+        />
+      </div>
+      {caption && (
+        <figcaption className="ital mt-3 text-[15px] text-ink-mute">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
   );
 }

@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "bounce-easing",
+        "value": "icon-jiggle_0.5s_ease-in-out]",
+        "createdAt": "2026-07-29T20:32:51.803Z",
+        "reason": "User explicitly requested a pop-and-jiggle icon hover animation"
+      }
+    ]
+  }
+}
