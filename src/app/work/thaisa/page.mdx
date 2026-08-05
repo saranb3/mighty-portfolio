@@ -1,21 +1,14 @@
-import { CaseStudyLayout, CaseStudySection } from "@/components/case-study-layout";
-import { ThaisaVisual } from "@/components/visuals";
+import { CaseStudyLayout, CaseStudySection, Figure } from "@/components/case-study-layout";
 
 export const metadata = {
-  title: "Thai Student Association — President | Mighty Burapachaisri",
+  title: "Thai Student Association — President | Saran Burapachaisri",
   description:
-    "A year of running ops for a 100+ member student org at UIUC. 12 events shipped, $409 raised, full event calendar.",
+    "A year of running ops for a 100+ member student org at UIUC. 12 events shipped, a full calendar, and a community that kept showing up.",
 };
 
 <CaseStudyLayout
-  sections={[
-    { id: "context", label: "Context" },
-    { id: "ops", label: "Operations" },
-    { id: "outcomes", label: "By the Numbers" },
-    { id: "reflection", label: "Reflection" },
-  ]}
   org={{ label: "Thai Student Association", icon: "T", iconBg: "bg-cherry text-paper" }}
-  title="Running a year of ops, events, and community for a 100+ member student org."
+  title="Running a year of ops, events, and community for a 100+ member org."
   meta={{
     role: "President",
     context: "Student Organization",
@@ -24,51 +17,43 @@ export const metadata = {
   next={{ href: "/work/gobabygo", label: "GoBabyGo" }}
 >
 
-<div className="rounded-2xl overflow-hidden bg-paper-soft border border-line aspect-[16/10] mb-20">
-  <ThaisaVisual />
-</div>
+<Figure
+  src="/images/thaisa/songkran.png"
+  alt="Songkran water-festival celebration on the UIUC Main Quad"
+  caption="Songkran on the Quad — our biggest turnout of the year."
+  priority
+/>
 
-<CaseStudySection
-  id="context"
-  label="Context"
-  headline="A year of running ops for a 100+ member org. Songkran on the Quad, Casino Night, Friendsgiving, Lunar New Year, and a soccer tournament that nearly required a referee."
->
+<CaseStudySection heading="Overview">
 
-Events that shipped on time, every time.
-
-TODO: expand on what TASA is, who it serves, and why the role mattered to you personally.
+For the 2025–26 school year I was president of the Thai Student Association at UIUC — a 100+ member org that's home base for Thai and Thai-curious students a long way from home. I owned operations end to end: the calendar, the exec team, the budget, and the twelve events we shipped, from **Songkran on the Quad** to the **Welcome Dinner**.
 
 </CaseStudySection>
 
-<CaseStudySection
-  id="ops"
-  label="Operations"
-  headline="Building the systems that let a volunteer-run org actually ship."
->
+<CaseStudySection heading="Challenges">
 
-TODO: how you organized the exec team, ran cadence, planned the calendar, handled budgeting, navigated UIUC bureaucracy.
+A student org runs on volunteers who are also full-time students, and that makes three things genuinely hard:
 
-</CaseStudySection>
-
-<CaseStudySection
-  id="outcomes"
-  label="By the Numbers"
-  headline="12 events. 100+ members. Full calendar shipped on time."
->
-
-- **12 events shipped** across academic year '25–'26, including ASTA Expo and Welcome Dinner
-- **$409 raised** through Thai Tea Sale; freshmen mentor program with 4 rotating P'Nong pairs
-- **100+ active members**, growing exec team, full event calendar
+- **Momentum** — people disappear at midterms, and events lose steam.
+- **Money** — programming costs more than membership dues bring in.
+- **Memory** — the board turns over every year, and institutional knowledge walks out the door with it.
 
 </CaseStudySection>
 
-<CaseStudySection
-  id="reflection"
-  label="Reflection"
-  headline="What running a student org taught me about leadership."
->
+<CaseStudySection heading="Solutions">
 
-TODO: lessons learned about delegation, motivation, succession, building institutional memory.
+- **Momentum:** weekly exec standups and a calendar planned a semester ahead, so nothing depended on a last-minute scramble.
+- **Money:** a Thai Tea Sale and small fundraisers covered the gap — **$409 raised** — which kept ticket prices low.
+- **Memory:** a freshman mentor program with four rotating *P'Nong* pairs, plus written run-of-show docs so next year's board starts with a playbook instead of a blank page.
+
+<Figure
+  src="/images/thaisa/welcomeparty.png"
+  alt="Members gathered at the Thai Student Association Welcome Dinner"
+  caption="Welcome Dinner — first-years meeting their P'Nong mentors."
+  aspect="4 / 3"
+/>
+
+The year added up to **12 events shipped on time**, a growing exec team, and **100+ active members** who kept showing up.
 
 </CaseStudySection>
 

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Link as TransitionLink } from "next-view-transitions";
 import { projects, type Project } from "@/content/projects";
 import { ProjectVisual } from "./visuals";
 import { ProjectGallery } from "./project-gallery";
@@ -11,7 +12,7 @@ import { ProjectGallery } from "./project-gallery";
 const isStartedRow = (p: Project) =>
   p.status === "founder" || p.status === "leadership";
 
-const cardOrder = ["gobabygo", "thaisa", "greenlight", "lostandfound", "illinihappenings"];
+const cardOrder = ["gobabygo", "thaisa", "greenlight", "lostandfound"];
 const orderOf = (slug: string) => {
   const i = cardOrder.indexOf(slug);
   return i === -1 ? cardOrder.length : i;
@@ -23,13 +24,13 @@ export function ProjectGrid() {
     .sort((a, b) => orderOf(a.slug) - orderOf(b.slug));
 
   return (
-    <section id="work" className="bg-ground px-6 lg:px-12 pt-12 lg:pt-10 pb-24 lg:pb-32">
+    <section id="work" className="scroll-mt-20 bg-ground px-6 lg:px-12 pt-12 lg:pt-10 pb-24 lg:pb-32">
       <div className="mx-auto max-w-6xl">
         <header>
           <h2 className="display font-semibold text-ink text-[clamp(2.5rem,5vw,4rem)] leading-[1.05]">
-            Founder Experience
+            Projects
           </h2>
-          <p className="mt-4 max-w-[65ch] text-[18px] leading-[1.6] text-ink-soft">
+          <p className="mt-4 max-w-[58ch] text-[18px] leading-[1.6] font-medium text-ink-soft">
             I like getting crafty and building communities of like minded people. Read more about my projects below!
           </p>
         </header>
@@ -136,24 +137,23 @@ function ProjectCard({ project, flip }: { project: Project; flip: boolean }) {
           </div>
         )}
 
-        {/* CTA */}
-        {project.ctaHref && (
-          <Link
-            href={project.ctaHref}
-            target={project.ctaHref.startsWith("http") ? "_blank" : undefined}
-            rel={
-              project.ctaHref.startsWith("http")
-                ? "noopener noreferrer"
-                : undefined
-            }
-            className="mt-7 inline-flex items-center gap-1.5 rounded-full border border-ink px-5 py-2.5 text-[15px] font-semibold text-ink no-underline transition-colors duration-200 hover:bg-ink hover:text-ground"
-          >
-            {project.ctaLabel}
-            <span aria-hidden>
-              {project.ctaHref.startsWith("http") ? "↗" : "→"}
-            </span>
-          </Link>
-        )}
+        {/* CTA — internal links animate via View Transitions; external open in a new tab */}
+        {project.ctaHref &&
+          (() => {
+            const external = project.ctaHref.startsWith("http");
+            const CtaLink = external ? Link : TransitionLink;
+            return (
+              <CtaLink
+                href={project.ctaHref}
+                target={external ? "_blank" : undefined}
+                rel={external ? "noopener noreferrer" : undefined}
+                className="mt-7 inline-flex items-center gap-1.5 rounded-full border border-ink px-5 py-2.5 text-[15px] font-semibold text-ink no-underline transition-colors duration-200 hover:bg-ink hover:text-ground"
+              >
+                {project.ctaLabel}
+                <span aria-hidden>{external ? "↗" : "→"}</span>
+              </CtaLink>
+            );
+          })()}
       </div>
     </div>
   );

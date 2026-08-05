@@ -1,74 +1,50 @@
-import { CaseStudyLayout, CaseStudySection } from "@/components/case-study-layout";
+import { CaseStudyLayout, CaseStudySection, Figure } from "@/components/case-study-layout";
 import { GobabyGoVisual } from "@/components/visuals";
 
 export const metadata = {
-  title: "GoBabyGo Thailand — Founder | Mighty Burapachaisri",
+  title: "GoBabyGo Thailand — Founder | Saran Burapachaisri",
   description:
     "Started in Bangkok modifying a single ride-on car for a kid who needed mobility. Grew into a national volunteer-run program across 7 chapters.",
 };
 
 <CaseStudyLayout
-  sections={[
-    { id: "origin", label: "Origin" },
-    { id: "scale", label: "Scaling" },
-    { id: "outcomes", label: "By the Numbers" },
-    { id: "reflection", label: "Reflection" },
-  ]}
   org={{ label: "GoBabyGo Thailand", icon: "G", iconBg: "bg-olive text-paper" }}
-  title="Building a national volunteer program that gives kids with mobility challenges modified ride-on cars."
+  title="A national volunteer program that gives kids with mobility challenges modified ride-on cars."
   meta={{
     role: "Founder",
     context: "Nonprofit",
     timeline: "2021 – 2024",
   }}
-  next={{ href: "/work/illinihappenings", label: "Illini Happenings" }}
+  next={{ href: "/work/thaisa", label: "Thai Student Association" }}
 >
 
-<div className="rounded-2xl overflow-hidden bg-paper-soft border border-line aspect-[16/10] mb-20">
+<div className="overflow-hidden rounded-2xl border border-line bg-panel aspect-[16/10]">
   <GobabyGoVisual />
 </div>
 
-<CaseStudySection
-  id="origin"
-  label="Origin"
-  headline="Founded in my school's maker space, GoBabyGo is a nonprofit engineering ride-on toy cars for children with disabilities."
->
+<CaseStudySection heading="Overview">
 
-Grew into a national volunteer-run program that builds and donates these cars to families across Thailand.
+Founded in my school's maker space, GoBabyGo is a nonprofit that engineers ride-on toy cars for children with disabilities. It grew into a national, volunteer-run program that builds and donates those cars to families across Thailand.
 
 TODO: expand on the first build — who the kid was, what the modification involved, what made it click.
 
 </CaseStudySection>
 
-<CaseStudySection
-  id="scale"
-  label="Scaling"
-  headline="From one chapter in Bangkok to 7 chapters across Thai universities."
->
+<CaseStudySection heading="Challenges">
 
-TODO: how you grew chapters, recruited and trained volunteers, navigated logistics, sourced cars and parts, partnered with families.
+Growing from one chapter in Bangkok to seven across Thai universities meant solving the hard parts of a volunteer operation: recruiting and training people, sourcing cars and parts, running build days, and reaching the families who needed them.
+
+TODO: the specific bottlenecks — logistics, funding, training, partnering with families.
 
 </CaseStudySection>
 
-<CaseStudySection
-  id="outcomes"
-  label="By the Numbers"
-  headline="7 chapters. 200+ volunteers. 30+ cars built and given to families."
->
+<CaseStudySection heading="Solutions">
 
 - **7 chapters** across Thai universities, each running independent build days
 - **200+ volunteers** trained in basic electrical and mechanical work
 - **30+ cars** built and given to families with kids who have mobility challenges
 
-</CaseStudySection>
-
-<CaseStudySection
-  id="reflection"
-  label="Reflection"
-  headline="What founding and handing off a nonprofit taught me."
->
-
-TODO: lessons on succession planning, institutional knowledge, when to hand off, what to keep.
+TODO: how the model was made repeatable, and what handing off the org taught me about succession and institutional knowledge.
 
 </CaseStudySection>
 

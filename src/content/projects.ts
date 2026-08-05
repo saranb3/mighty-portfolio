@@ -38,7 +38,7 @@ export const projects: Project[] = [
     metricsLabel: "By the numbers",
     metrics: [
       "**12 events shipped** across academic year '25–'26, including ASTA Expo and Welcome Dinner.",
-      "**$409 raised** through Thai Tea Sale; freshmen mentor program with 4 rotating P'Nong pairs.",
+      "**$1000 raised** through Thai Tea Sale; freshmen mentor program with 4 rotating P'Nong pairs.",
       "**100+ active members**, growing exec team, full event calendar.",
     ],
     tags: ["Operations", "Event production", "Team leadership", "Community"],
@@ -89,25 +89,5 @@ export const projects: Project[] = [
       { value: "200+", label: "volunteers trained" },
       { value: "30+", label: "cars built & donated" },
     ],
-  },
-  {
-    slug: "illinihappenings",
-    name: "Illini Happenings",
-    nameItalic: "campus events",
-    status: "founder",
-    statusLabel: "Founder",
-    role: "Founder · 2025",
-    framing: "narrative",
-    narrative:
-      "A project to make campus events findable at UIUC — one place to see what's happening instead of six group chats and a flyer wall. Case study in progress; ask me about it.",
-    metricsLabel: "What I built",
-    metrics: [
-      "TODO: outcome 1",
-      "TODO: outcome 2",
-      "TODO: outcome 3",
-    ],
-    tags: ["Founding", "Campus", "Product"],
-    /* Case-study page is still TODO — no CTA until it's written. */
-    visualKey: "illinihappenings",
   },
 ];

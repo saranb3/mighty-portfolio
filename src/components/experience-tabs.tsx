@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { experiences } from "@/content/experience";
+import { experiences, type Experience } from "@/content/experience";
 import { ProductDeck } from "./product-deck";
 
 export function ExperienceTabs() {
@@ -20,7 +20,7 @@ export function ExperienceTabs() {
   };
 
   return (
-    <section id="experience" className="bg-ground px-6 lg:px-12 pt-12 lg:pt-16 pb-12 lg:pb-16">
+    <section id="experience" className="scroll-mt-20 bg-ground px-6 lg:px-12 pt-12 lg:pt-16 pb-12 lg:pb-16">
       <div className="mx-auto max-w-6xl">
         <h2 className="display font-semibold text-ink text-[clamp(2.5rem,5vw,4rem)] leading-[1.05]">
           Work experience
@@ -118,32 +118,84 @@ export function ExperienceTabs() {
             className="lg:min-h-[320px] fade-up"
             style={{ animationDuration: "0.45s" }}
           >
-            <h3 className="display font-semibold text-[24px] lg:text-[28px] leading-[1.15] text-ink">
-              {active.role}{" "}
-              <span className="text-ink-soft">@ {active.company}</span>
-            </h3>
-            <p className="mt-2 text-[15px] font-medium text-ink-soft">
-              {active.period} · {active.location}
-            </p>
+            <RolePanel active={active} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
-            <ul className="mt-6 space-y-4 max-w-[62ch]">
-              {active.bullets.map((bullet) => (
-                <li key={bullet} className="flex gap-3">
-                  <span
-                    aria-hidden
-                    className="mt-[11px] size-1.5 shrink-0 rounded-full bg-ink-mute"
-                  />
-                  <span className="text-[17px] leading-[1.6] text-ink-soft">
-                    {bullet}
-                  </span>
-                </li>
-              ))}
-            </ul>
+function BulletList({ bullets }: { bullets: string[] }) {
+  return (
+    <ul className="space-y-4 max-w-[62ch]">
+      {bullets.map((bullet) => (
+        <li key={bullet} className="flex gap-3">
+          <span
+            aria-hidden
+            className="mt-[11px] size-1.5 shrink-0 rounded-full bg-ink-mute"
+          />
+          <span className="text-[17px] leading-[1.6] text-ink-soft">
+            {bullet}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
-            <ProductDeck
-              companyId={active.id}
-              cta={
-                active.href ? (
+function RolePanel({ active }: { active: Experience }) {
+  const [open, setOpen] = useState(false);
+  const bulletsId = `exp-bullets-${active.id}`;
+
+  return (
+    <>
+      <h3 className="display font-semibold text-[24px] lg:text-[28px] leading-[1.15] text-ink">
+        {active.role}{" "}
+        <span className="text-ink-soft">@ {active.company}</span>
+      </h3>
+      <p className="mt-2 text-[15px] font-medium text-ink-soft">
+        {active.period} · {active.location}
+      </p>
+
+      {active.synopsis ? (
+        <>
+          <p className="mt-6 max-w-[62ch] text-[17px] leading-[1.6] text-ink-soft">
+            {active.synopsis}
+          </p>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls={bulletsId}
+            className="group mt-4 inline-flex items-center gap-1.5 text-[15px] font-semibold text-ink"
+          >
+            <span className="underline underline-offset-4 decoration-2">
+              {open ? "Read less" : "Read more"}
+            </span>
+            <span
+              aria-hidden
+              className={`transition-transform duration-300 ease-out ${
+                open ? "rotate-180" : ""
+              }`}
+            >
+              ↓
+            </span>
+          </button>
+          <div id={bulletsId} hidden={!open} className="mt-6">
+            <BulletList bullets={active.bullets} />
+          </div>
+        </>
+      ) : (
+        <div className="mt-6">
+          <BulletList bullets={active.bullets} />
+        </div>
+      )}
+
+      <ProductDeck
+        companyId={active.id}
+        cta={
+          active.href ? (
                   <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                     <Link
                       href={active.href}
@@ -194,12 +246,9 @@ export function ExperienceTabs() {
                       </Link>
                     ) : null}
                   </div>
-                ) : null
-              }
-            />
-          </div>
-        </div>
-      </div>
-    </section>
+          ) : null
+        }
+      />
+    </>
   );
 }

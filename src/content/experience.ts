@@ -9,6 +9,8 @@ export interface Experience {
   iconBg: string;
   /* Optional logo image; falls back to the letter monogram when absent */
   iconSrc?: string;
+  /* Short intro shown above the bullets; enables the "Read more" disclosure */
+  synopsis?: string;
   bullets: string[];
   href?: string;
   ctaLabel?: string;
@@ -26,10 +28,14 @@ export const experiences: Experience[] = [
     icon: "Z",
     iconBg: "bg-ink text-ground",
     iconSrc: "/images/logos/zebra.png",
+    synopsis:
+    "Product Management intern on Zebra's Advanced Location Technologies team. I own prioritization tooling for a $405M RFID portfolio, translate customer problems into one pagers that engineering scopes from, and built a Claude powered pipeline that turns raw customer feedback into ranked feature requests.",
     bullets: [
-      "Cut release planning 35% for a $405M portfolio by automating roadmap prioritization with a Claude workflow.",
-      "Presented GTM strategy to marketing and sales, launching enablement assets to 10,000+ channel partners.",
-      "Analyzed 5 competitors and synthesized regional PM feedback into PRD feature scope for a handheld reader.",
+      "Automated product roadmap with Claude, cutting release planning time 35% for $405M hardware portfolio",
+      "Published Product Marketing Bulletins and user guides for 3 device launches, reaching 100+ channel partners",
+      "Conducted in-depth competitor research and market trends to shape a one-pager for a new handheld reader",
+      "Sized a $2B hospitality use case, prototyped and pitched an RFID tracking system to software and hardware", 
+      "Ran weekly discovery calls with retail prospects, translating pain points and bottlenecks into RFID use cases"
     ],
   },
   {
@@ -41,13 +47,16 @@ export const experiences: Experience[] = [
     icon: "B",
     iconBg: "bg-[#003d7a] text-ground",
     iconSrc: "/images/logos/bangkokbank.jpeg",
+    synopsis:
+      "Product lead on a 15 person team, building personas, user flows, and app screens for a tourist safety app, designed for the tens of millions of foreign travelers who visit Thailand each year.",
     bullets: [
-      "Led a 15-person team to build and pitch TripBuddy, a tourist safety app — 1st place among 190 teams at the Bangkok Bank hackathon.",
-      "Interviewed 30 travelers and officials, building personas that shaped segmentation and 4 core product flows.",
-      "Wireframed app screens in Figma and analyzed Mixpanel funnels to prioritize features, lifting conversion 40%.",
+      "Led a 15-person team to pitch a tourist safety app, placing 1st among 190 teams at Bangkok Bank hackathon", 
+      "Ran cross-functional weekly standups, accelerating launch timeline by 3 weeks for earlier user feedback",
+      "Interviewed 30 travelers and officials, building personas that shaped segmentation and 4 core product flows",
+      "Wireframed app screens in Figma and analyzed Mixpanel funnels to prioritize features, lifting conversion 40%"
     ],
     href: "/work/bangkokbank",
-    ctaLabel: "uBuddy case study",
+    ctaLabel: "Buddy case study",
   },
   {
     id: "airestate",
@@ -58,22 +67,26 @@ export const experiences: Experience[] = [
     icon: "A",
     iconBg: "bg-tangerine-deep text-ground",
     iconSrc: "/images/logos/airestate.jpeg",
+    synopsis:
+      "Intern on the backend engineering team, building an AI pipeline that autofills incomplete listings and the matching logic that ranks them against what renters are searching for, across 1,000+ properties.",
     bullets: [
-      "Architected a multi-step GPT-4o pipeline to auto-fill listings, lifting click-through rate 30% across 1,000+ listings.",
-      "Built 10+ RESTful APIs to cut page latency by 500ms, boosting checkout completion across 1,000+ listings.",
-      "Authored Swagger API documentation for Postman endpoints, reducing onboarding time for 5 new engineers.",
+      "Architected a GPT-4o pipeline to fill empty fields in listings, lifting click through rate 30% across 1,000+ listings",
+      "Built 10+ REST APIs cutting page latency 500ms, lifting checkout completion and driving $10K in first month",
+      "Authored Swagger API documentation for Postman endpoints, reducing onboarding time for 5 new engineers"
     ],
     href: "/work/airestate",
     ctaLabel: "Read the AirEstate writeup",
   },
   {
     id: "scribear",
-    company: "ScribeAR · UIUC",
+    company: "ScribeAR  UIUC",
     role: "Research Intern",
     period: "Jan – Apr 2025",
     location: "Champaign, Illinois",
     icon: "S",
     iconBg: "bg-[#13294b] text-ground",
+    synopsis:
+      "Research intern on an AI accessibility app, shipping LaTeX-enabled captioning and prioritizing the features that cut drop-off for deaf and hard-of-hearing students.",
     bullets: [
       "Shipped LaTeX-enabled captioning for an AI accessibility web app, growing DAU 30% within launch week.",
       "Designed funnel analysis and interviews to prioritize 8 accessibility features, cutting drop-off for deaf students.",

@@ -8,7 +8,7 @@ export function SkillsGrid() {
           Skills
         </h2>
         <p className="mt-4 max-w-[58ch] text-[18px] leading-[1.6] font-medium text-ink-soft">
-          How I work, from discovering an idea to shipping the product! 
+          How I work, from discovering an idea to shipping the product!
         </p>
 
         <div className="mt-6 grid gap-x-12 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
