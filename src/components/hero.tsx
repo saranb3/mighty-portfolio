@@ -31,22 +31,22 @@ const stickers = [
 const postcards = [
   {
     src: "/images/mighty-1.png",
-    alt: "Mighty at the beach in Santa Monica",
+    alt: "Saran at the beach in Santa Monica",
     caption: "Beach Day @ Santa Monica",
   },
   {
     src: "/images/soccer.png",
-    alt: "Mighty playing football",
+    alt: "Saran playing football",
     caption: "Match Day @ Chelsea Piers",
   },
   {
     src: "/images/pitch.JPG",
-    alt: "Mighty on the pitch",
+    alt: "Saran on the pitch",
     caption: "Pitching @ Bangkok ",
   },
   {
     src: "/images/photography.jpeg",
-    alt: "A photo Mighty shot on his Fujifilm X-T50",
+    alt: "A photo Saran shot on his Fujifilm X-T50",
     caption: "Photographing @ West Village",
   },
 ];
@@ -144,7 +144,7 @@ function ActionIcon({
 }
 
 /* "Snapshot" hero — photo-led and personality-forward: a tilted polaroid that
-   drifts through Mighty's snapshots on its own, fact stickers, the greeting in
+   drifts through Saran's snapshots on its own, fact stickers, the greeting in
    the headline. Warmth with receipts. */
 export function Hero() {
   const [index, setIndex] = useState(0);
@@ -179,7 +179,7 @@ export function Hero() {
             className="display font-bold text-ink text-[clamp(2.9rem,6vw,5rem)] leading-[1.02] fade-up"
             style={{ animationDelay: "0.05s" }}
           >
-            Hello, I&rsquo;m Mighty!
+            Hello, I&rsquo;m Saran!
           </h1>
 
           <p
@@ -198,7 +198,7 @@ export function Hero() {
             />
             llinois.
             <br /><br />
-            <span className="font-bold italic">PM Intern</span> @ Zebra Technologies{" "}
+            <span className="font-bold italic">PMco Intern</span> @ Zebra Technologies{" "}
             <LogoChip src="/images/logos/zebra.png" alt="Zebra Technologies" size={1024} /> 
             <br />
             Prev. @ {""}Bangkok Bank {" "}

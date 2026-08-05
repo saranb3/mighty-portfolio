@@ -38,7 +38,7 @@ export const projects: Project[] = [
     metricsLabel: "By the numbers",
     metrics: [
       "**12 events shipped** across academic year '25–'26, including ASTA Expo and Welcome Dinner.",
-      "**$409 raised** through Thai Tea Sale; freshmen mentor program with 4 rotating P'Nong pairs.",
+      "**$1000 raised** through Thai Tea Sale; freshmen mentor program with 4 rotating P'Nong pairs.",
       "**100+ active members**, growing exec team, full event calendar.",
     ],
     tags: ["Operations", "Event production", "Team leadership", "Community"],

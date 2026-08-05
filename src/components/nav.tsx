@@ -24,7 +24,7 @@ export function Nav() {
           aria-label="Home"
           className="display justify-self-start text-ink font-bold text-xl tracking-tight no-underline"
         >
-          Mighty
+          Saran
         </Link>
 
         {/* Center — nav */}

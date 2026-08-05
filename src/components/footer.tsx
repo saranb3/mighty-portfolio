@@ -37,7 +37,7 @@ export function Footer() {
     <footer id="contact" className="bg-ink text-ground">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 lg:px-12 py-7 sm:grid sm:grid-cols-3 sm:items-center">
         <p className="order-2 text-[17px] font-medium text-white sm:order-none sm:justify-self-start">
-          © 2026 Mighty Burapachaisri
+          © 2026 Saran Burapachaisri
         </p>
 
         <div className="order-1 w-full max-w-[400px] sm:order-none sm:justify-self-center">

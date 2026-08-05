@@ -28,9 +28,9 @@ export function ProjectGrid() {
       <div className="mx-auto max-w-6xl">
         <header>
           <h2 className="display font-semibold text-ink text-[clamp(2.5rem,5vw,4rem)] leading-[1.05]">
-            Founder Experience
+            Projects
           </h2>
-          <p className="mt-4 max-w-[65ch] text-[18px] leading-[1.6] text-ink-soft">
+          <p className="mt-4 max-w-[58ch] text-[18px] leading-[1.6] font-medium text-ink-soft">
             I like getting crafty and building communities of like minded people. Read more about my projects below!
           </p>
         </header>
