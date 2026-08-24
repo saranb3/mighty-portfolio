@@ -198,7 +198,7 @@ export function Hero() {
             />
             llinois.
             <br /><br />
-            <span className="font-bold italic">PMco Intern</span> @ Zebra Technologies{" "}
+            <span className="font-bold italic">Product Intern</span> @ Zebra Technologies{" "}
             <LogoChip src="/images/logos/zebra.png" alt="Zebra Technologies" size={1024} /> 
             <br />
             Prev. @ {""}Bangkok Bank {" "}
