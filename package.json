@@ -13,6 +13,7 @@
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.1.6",
     "@types/mdx": "^2.0.13",
+    "@vercel/analytics": "^2.0.1",
     "lucide-react": "^0.469.0",
     "motion": "^11.15.0",
     "next": "^15.5.15",

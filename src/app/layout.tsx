@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ViewTransitions } from "next-view-transitions";
+import { Analytics } from "@vercel/analytics/next";
 import { bricolage, fraunces, jetbrainsMono, satoshi } from "@/lib/fonts";
 import { Nav } from "@/components/nav";
 import "./globals.css";
@@ -46,6 +47,7 @@ export default function RootLayout({
         <body>
           <Nav />
           {children}
+          <Analytics />
         </body>
       </html>
     </ViewTransitions>
